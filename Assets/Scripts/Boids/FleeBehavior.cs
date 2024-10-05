@@ -18,6 +18,7 @@ public class FleeBehavior : IBehavior
 
 		foreach (Transform fleePoint in FleePoints)
 		{
+
 			float perception = FleeParameters.PerceptionDistance;
 			Vector3 diff = _self.transform.position - fleePoint.transform.position;
 			float dist = diff.magnitude;
