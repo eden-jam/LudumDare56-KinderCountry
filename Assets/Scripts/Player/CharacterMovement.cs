@@ -20,6 +20,8 @@ public class CharacterMovement : MonoBehaviour
         Vector3 destination = detector.clickWorldPosition; 
         Vector3 move = destination - transform.position; //Vecteur de déplacement
 
+        controller.transform.rotation = Quaternion.identity; //Forcer la rotation à 0
+
         if (move.magnitude <= 1) //Si on est très proche, on stoppe
         {
             destinationReached = true;
@@ -30,7 +32,8 @@ public class CharacterMovement : MonoBehaviour
             destinationReached = false;
         }
 
-        controller.Move(move.normalized * Time.deltaTime * playerSpeed); ;  //Déplacement à chaque frame selon la playerSpeed
+        //controller.Move(move.normalized * Time.deltaTime * playerSpeed);  //Déplacement à chaque frame selon la playerSpeed
+        controller.SimpleMove(move.normalized * playerSpeed);
 
         if (move != Vector3.zero)
         {

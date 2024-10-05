@@ -30,6 +30,7 @@ public class SeperationBehavior : IBehavior
 			}
 		}
 
+		DebugValue = Average(separation, total) * _parameters.Weight;
 		return Average(separation, total) * _parameters.Weight;
 	}
 }

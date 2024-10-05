@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8187252899749888852}
   - component: {fileID: 8611285757065132614}
   m_Layer: 5
-  m_Name: ActiveHUBBox
+  m_Name: ActiveHUDBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1077,7 +1077,7 @@ GameObject:
   - component: {fileID: 846863950719608718}
   - component: {fileID: 3231320605657143095}
   m_Layer: 5
-  m_Name: HUBParentPanel
+  m_Name: HUDParentPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1265,7 +1265,7 @@ GameObject:
   - component: {fileID: 1496865262602666752}
   - component: {fileID: 599927542183857871}
   m_Layer: 5
-  m_Name: Canvas - HUB
+  m_Name: Canvas - HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

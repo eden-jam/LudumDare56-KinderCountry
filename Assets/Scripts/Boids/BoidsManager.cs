@@ -11,6 +11,8 @@ public class BoidsManager : MonoBehaviour
 	[SerializeField] private List<Transform> _fleePoints = new List<Transform>();
 	[SerializeField] private Transform _player = null;
 	[SerializeField] private List<BoidsParameters> _boidsParameters = null;
+	[SerializeField] private GameObject _fleePrefab = null;
+	[SerializeField] private Transform _fleeParent = null;
 
 	private void Awake()
 	{
@@ -19,7 +21,6 @@ public class BoidsManager : MonoBehaviour
 
 	private void Start()
 	{
-
 		for (int i = 0; i < _count; i++)
         {
 			BoidsParameters boidParameters = _boidsParameters[Random.Range(0, _boidsParameters.Count)];
@@ -45,21 +46,22 @@ public class BoidsManager : MonoBehaviour
 
 	public void Lure()
 	{
-		Debug.Log("Lure");
+		foreach (Boids boid in _boids)
+		{
+			boid.Lure(_player);
+		}
 	}
 
 	public void Cry()
 	{
-		Debug.Log("Cry");
+		foreach (Boids boid in _boids)
+		{
+			boid.Cry(_player);
+		}
 	}
 
-	public void Move()
+	public void SpawnFlee(Vector3 position)
 	{
-		Debug.Log("Move");
-	}
-
-	public void SpawnFlee()
-	{
-		Debug.Log("SpawnFlee");
+		_fleePoints.Add(Instantiate(_fleePrefab, position, Quaternion.identity, _fleeParent).transform);
 	}
 }

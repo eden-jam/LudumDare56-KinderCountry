@@ -11,15 +11,20 @@ public enum Type
 
 public class Boids : MonoBehaviour
 {
+	public int Life = 100;
+
     private Rigidbody _rigidbody = null;
     [SerializeField] private Transform _meshRenderer = null;
 
     private SeperationBehavior _seperationBehavior = new SeperationBehavior();
+    private SeperationBehavior _antiCollapseBehavior = new SeperationBehavior();
     private EdgeAvoidBehavior _edgeAvoidBehavior = new EdgeAvoidBehavior();
     private CohesionBehavior _cohesionBehavior = new CohesionBehavior();
     private AlignBehavior _alignBehavior = new AlignBehavior();
     private FleeBehavior _fleeBehavior = new FleeBehavior();
     private AttractionBehavior _attractionBehavior = new AttractionBehavior();
+    private LureBehavior _lureBehavior = new LureBehavior();
+    private CryBehavior _cryBehavior = new CryBehavior();
 
     private BoidsParameters _boidsParameters = null;
 
@@ -57,9 +62,24 @@ public class Boids : MonoBehaviour
 		_edgeAvoidBehavior.Init(this, _boidsParameters.EdgeAvoidParameters);
 		_fleeBehavior.Init(this, _boidsParameters.FleeParameters);
 		_seperationBehavior.Init(this, _boidsParameters.SeperationParameters);
+		_antiCollapseBehavior.Init(this, _boidsParameters.AntiCollapseParameters);
+		_lureBehavior.Init(this, _boidsParameters.LureParameters);
+		_cryBehavior.Init(this, _boidsParameters.CryParameters);
 	}
 
-    public void UpdateBoids(in List<Boids> others, in List<Transform> fleePoint, in Transform attractionPoint)
+	public void Lure(Transform transform)
+	{
+		_lureBehavior.AttractionPoint = transform;
+		_lureBehavior.ResetTimer();
+	}
+
+	public void Cry(Transform transform)
+	{
+		_cryBehavior.AttractionPoint = transform;
+		_cryBehavior.ResetTimer();
+	}
+
+	public void UpdateBoids(in List<Boids> others, in List<Transform> fleePoint, in Transform attractionPoint)
     {
         Vector3 align = _alignBehavior.UpdateBoids(others);
 		_attractionBehavior.AttractionPoint = attractionPoint;
@@ -69,6 +89,9 @@ public class Boids : MonoBehaviour
 		_fleeBehavior.FleePoints = fleePoint;
 		Vector3 flee = _fleeBehavior.UpdateBoids(others);
         Vector3 separation = _seperationBehavior.UpdateBoids(others);
+        Vector3 antiCollapse = _antiCollapseBehavior.UpdateBoids(others);
+        Vector3 lure = _lureBehavior.UpdateBoids(others);
+        Vector3 cry = _cryBehavior.UpdateBoids(others);
 
 		Velocity += align * Time.deltaTime;
 		Velocity += attraction * Time.deltaTime;
@@ -76,10 +99,38 @@ public class Boids : MonoBehaviour
 		Velocity += edgeAvoid * Time.deltaTime;
 		Velocity += flee * Time.deltaTime;
 		Velocity += separation * Time.deltaTime;
+		Velocity += antiCollapse * Time.deltaTime;
+		Velocity += lure * Time.deltaTime;
+		Velocity += cry * Time.deltaTime;
 
 		if (Velocity.magnitude > _boidsParameters.MaxSpeed)
 		{
 			Velocity = Velocity.normalized * _boidsParameters.MaxSpeed;
 		}
+	}
+
+	private void OnDrawGizmos()
+	{
+		if (_boidsParameters.DisplayGizmos == false)
+		{
+			return;
+		}
+
+		Gizmos.color = Color.red;
+		Gizmos.DrawRay(transform.position, _alignBehavior.DebugValue);
+		Gizmos.color = Color.green;
+		Gizmos.DrawRay(transform.position, _attractionBehavior.DebugValue);
+		Gizmos.color = Color.blue;
+		Gizmos.DrawRay(transform.position, _cohesionBehavior.DebugValue);
+		Gizmos.color = Color.yellow;
+		Gizmos.DrawRay(transform.position, _edgeAvoidBehavior.DebugValue);
+		Gizmos.color = Color.magenta;
+		Gizmos.DrawRay(transform.position, _fleeBehavior.DebugValue);
+		Gizmos.color = Color.cyan;
+		Gizmos.DrawRay(transform.position, _seperationBehavior.DebugValue);
+		Gizmos.color = Color.black;
+		Gizmos.DrawRay(transform.position, _lureBehavior.DebugValue);
+		Gizmos.color = Color.white;
+		Gizmos.DrawRay(transform.position, _cryBehavior.DebugValue);
 	}
 }

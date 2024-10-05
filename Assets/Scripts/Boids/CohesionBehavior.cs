@@ -30,6 +30,7 @@ public class CohesionBehavior : IBehavior
 			}
 		}
 
+		DebugValue = Average(cohesion, total) * _parameters.Weight;
 		return Average(cohesion, total) * _parameters.Weight;
 	}
 }

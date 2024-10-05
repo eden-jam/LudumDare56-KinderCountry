@@ -42,6 +42,7 @@ public class EdgeAvoidBehavior : IBehavior
 			total++;
 		}
 
+		DebugValue = Average(steering, total) * _parameters.Weight;
 		return Average(steering, total) * _parameters.Weight;
 	}
 }

@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3422228334405241719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3451669263765491824}
+  m_Layer: 0
+  m_Name: FleePoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3451669263765491824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3422228334405241719}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4726915018375931213}
+  m_Father: {fileID: 2426297999224500870}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7970824752603205200
 GameObject:
   m_ObjectHideFlags: 0
@@ -29,7 +61,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3451669263765491824}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5004490952680062065
@@ -46,15 +79,73 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _count: 100
   _fleePoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4726915018375931213}
   _player: {fileID: 0}
   _boidsParameters:
   - {fileID: 11400000, guid: e97efe281b566a9449d3e76f30cabb5a, type: 2}
   - {fileID: 11400000, guid: dddfac14ee8adee4ca6468b68bb67884, type: 2}
   - {fileID: 11400000, guid: 038519603a332654d983dc8690d73b5a, type: 2}
+  _fleePrefab: {fileID: 8288903765538694442, guid: 004c4e2ef4cb51a459c3b9626bc8c744, type: 3}
+  _fleeParent: {fileID: 3451669263765491824}
+--- !u!1001 &2983610943671893161
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3451669263765491824}
+    m_Modifications:
+    - target: {fileID: 7565636647673813476, guid: 004c4e2ef4cb51a459c3b9626bc8c744, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7565636647673813476, guid: 004c4e2ef4cb51a459c3b9626bc8c744, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7565636647673813476, guid: 004c4e2ef4cb51a459c3b9626bc8c744, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -24.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7565636647673813476, guid: 004c4e2ef4cb51a459c3b9626bc8c744, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7565636647673813476, guid: 004c4e2ef4cb51a459c3b9626bc8c744, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7565636647673813476, guid: 004c4e2ef4cb51a459c3b9626bc8c744, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7565636647673813476, guid: 004c4e2ef4cb51a459c3b9626bc8c744, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7565636647673813476, guid: 004c4e2ef4cb51a459c3b9626bc8c744, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7565636647673813476, guid: 004c4e2ef4cb51a459c3b9626bc8c744, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7565636647673813476, guid: 004c4e2ef4cb51a459c3b9626bc8c744, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8288903765538694442, guid: 004c4e2ef4cb51a459c3b9626bc8c744, type: 3}
+      propertyPath: m_Name
+      value: FleePoint
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 004c4e2ef4cb51a459c3b9626bc8c744, type: 3}
+--- !u!4 &4726915018375931213 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7565636647673813476, guid: 004c4e2ef4cb51a459c3b9626bc8c744, type: 3}
+  m_PrefabInstance: {fileID: 2983610943671893161}
+  m_PrefabAsset: {fileID: 0}

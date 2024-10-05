@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8dcbbf14e576274a9b8075ccbce15ff, type: 3}
   m_Name: RedBoidsParameters
   m_EditorClassIdentifier: 
+  DisplayGizmos: 0
   BoidPrefab: {fileID: 1803561816863729719, guid: a2ce29f33ee08e24d8e00ac70156a047, type: 3}
   Type: 0
   MaxSpeed: 5
@@ -33,10 +34,15 @@ MonoBehaviour:
     MinPosition: {x: -50, y: -50}
     MaxPosition: {x: 50, y: 50}
   FleeParameters:
-    Weight: 50
+    Weight: -20
     PerceptionDistance: 5
   SeperationParameters:
     Weight: 4
     PerceptionDistance: 3
+    FriendlyWeight: 1
+    StrangerWeight: 1
+  AntiCollapseParameters:
+    Weight: 25
+    PerceptionDistance: 1
     FriendlyWeight: 1
     StrangerWeight: 1

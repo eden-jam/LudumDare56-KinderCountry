@@ -30,6 +30,7 @@ public class AlignBehavior : IBehavior
 			}
 		}
 
+		DebugValue = Average(align, total) * _parameters.Weight;
 		return Average(align, total) * AlignParameters.Weight;
 	}
 }

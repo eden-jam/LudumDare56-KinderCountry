@@ -5,6 +5,7 @@ public abstract class IBehavior
 {
 	protected Boids _self = null;
 	protected IBehaviorParameters _parameters = null;
+	public Vector3 DebugValue = Vector3.zero;
 
 	public void Init(Boids self, IBehaviorParameters behaviorParameters)
 	{
