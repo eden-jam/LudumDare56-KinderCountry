@@ -13,6 +13,7 @@ public class BoidsManager : MonoBehaviour
 	[SerializeField] private List<BoidsParameters> _boidsParameters = null;
 	[SerializeField] private GameObject _fleePrefab = null;
 	[SerializeField] private Transform _fleeParent = null;
+	private int _leavingCount = 100;
 
 	private void Awake()
 	{
@@ -40,9 +41,22 @@ public class BoidsManager : MonoBehaviour
 
 	public int GetBoidsCount()
 	{
-		Debug.Log(_boids.Count);
-		return _boids.Count;
+		Debug.Log(_leavingCount);
+		return _leavingCount;
 	}
+
+	public void UpdateCount()
+	{
+		_leavingCount = _boids.Count;
+
+		foreach (Boids boid in _boids)
+        {
+			if (boid.HasFinish)
+			{
+				_leavingCount--;
+			}
+		}
+    }
 
 	public void Lure()
 	{
