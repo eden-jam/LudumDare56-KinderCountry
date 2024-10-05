@@ -1,23 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FleeBehavior
+public class FleeBehavior : IBehavior
 {
-	private Boids _self = null;
+	public FleeParameters FleeParameters => _parameters as FleeParameters;
 
-	public void Init(Boids self)
-	{
-		_self = self;
-	}
-
-	public Vector3 UpdateBoids(in List<Boids> others, in List<Transform> fleePoints)
+	public List<Transform> FleePoints;
+	public override Vector3 UpdateBoids(in List<Boids> others)
 	{
 		Vector3 fleeSteering = Vector3.zero;
-		float total = 0;
+		int total = 0;
 
-		foreach (Transform fleePoint in fleePoints)
+		foreach (Transform fleePoint in FleePoints)
 		{
-			float perception = 5.0f;
+			float perception = FleeParameters.PerceptionDistance;
 			Vector3 diff = _self.transform.position - fleePoint.transform.position;
 			float dist = diff.magnitude;
 			if (dist < perception)
@@ -27,13 +23,6 @@ public class FleeBehavior
 			}
 		}
 
-		if (total > 0)
-		{
-			fleeSteering /= total;
-			fleeSteering = fleeSteering.normalized * _self.MaxSpeed;
-			fleeSteering -= _self.Velocity;
-			fleeSteering = fleeSteering.normalized * _self.MaxSpeed;
-		}
-		return fleeSteering;
+		return Average(fleeSteering, total);
 	}
 }

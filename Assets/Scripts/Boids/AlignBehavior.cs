@@ -1,26 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AlignBehavior
+public class AlignBehavior : IBehavior
 {
-	private Boids _self = null;
+	public AlignParameters AlignParameters => _parameters as AlignParameters;
 
-	public void Init(Boids self)
-	{
-		_self = self;
-	}
-
-	public Vector3 UpdateBoids(in List<Boids> others)
+	public override Vector3 UpdateBoids(in List<Boids> others)
 	{
 		Vector3 align = Vector2.zero;
-		float total = 0;
+		int total = 0;
 		foreach (Boids other in others)
 		{
 			if (other == _self)
 			{
 				continue;
 			}
-			float perception = 5.0f;
+			float perception = AlignParameters.PerceptionDistance;
 			Vector3 diff = _self.transform.position - other.transform.position;
 			float dist = diff.magnitude;
 			if (dist < perception)
@@ -30,13 +25,6 @@ public class AlignBehavior
 			}
 		}
 
-		if (total > 0)
-		{
-			align /= total;
-			align = align.normalized * _self.MaxSpeed;
-			align -= _self.Velocity;
-			align = align.normalized * _self.MaxSpeed;
-		}
-		return align;
+		return Average(align, total) * AlignParameters.Weight;
 	}
 }

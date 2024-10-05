@@ -940,6 +940,7 @@ MonoBehaviour:
   - {fileID: 138628052}
   - {fileID: 1983103862}
   _player: {fileID: 1820362057}
+  _boidsParameters: {fileID: 11400000, guid: e97efe281b566a9449d3e76f30cabb5a, type: 2}
 --- !u!4 &931038411
 Transform:
   m_ObjectHideFlags: 0
