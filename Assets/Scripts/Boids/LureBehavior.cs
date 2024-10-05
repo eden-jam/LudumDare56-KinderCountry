@@ -7,9 +7,14 @@ public class LureBehavior : IBehavior
 	public LureParameters LureParameters => _parameters as LureParameters;
 	private float _timer = 0.0f;
 
-	public void ResetTimer()
+	public void StartTimer()
 	{
 		_timer = LureParameters.Duration;
+	}
+
+	public void ResetTimer()
+	{
+		_timer = 0.0f;
 	}
 
 	public override Vector3 UpdateBoids(in List<Boids> others)

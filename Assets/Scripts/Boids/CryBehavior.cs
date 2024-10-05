@@ -7,9 +7,14 @@ public class CryBehavior : IBehavior
 	public CryParameters CryParameters => _parameters as CryParameters;
 	private float _timer = 0.0f;
 
-	public void ResetTimer()
+	public void StartTimer()
 	{
 		_timer = CryParameters.Duration;
+	}
+
+	public void ResetTimer()
+	{
+		_timer = 0.0f;
 	}
 
 	public override Vector3 UpdateBoids(in List<Boids> others)

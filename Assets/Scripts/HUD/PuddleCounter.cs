@@ -5,7 +5,7 @@ public class PuddleCounter : MonoBehaviour
 {
 
     public TextMeshProUGUI mainText;
-    void Start()
+    void FixedUpdate()
     {
         mainText.text = BoidsManager.Instance.GetBoidsCount().ToString() ;
     }

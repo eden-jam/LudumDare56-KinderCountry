@@ -25,7 +25,8 @@ public class BoidsManager : MonoBehaviour
 		for (int i = 0; i < _count; i++)
         {
 			BoidsParameters boidParameters = _boidsParameters[Random.Range(0, _boidsParameters.Count)];
-			Boids boid = Instantiate(boidParameters.BoidPrefab, transform);
+			Vector3 boidsPosition = new Vector3(Random.Range(-50.0f, 50.0f), 0.0f, Random.Range(-50.0f, 50.0f));
+			Boids boid = Instantiate(boidParameters.BoidPrefab, boidsPosition, Quaternion.identity, transform);
 			boid.Init(boidParameters);
 			_boids.Add(boid);
 		}
@@ -41,7 +42,6 @@ public class BoidsManager : MonoBehaviour
 
 	public int GetBoidsCount()
 	{
-		Debug.Log(_leavingCount);
 		return _leavingCount;
 	}
 
