@@ -22,7 +22,7 @@ public class ClickDetector : MonoBehaviour
             float horizontal = mousePos.x;
             float vertical = mousePos.y;
 
-            Debug.Log(horizontal + " | " + vertical);
+            //Debug.Log(horizontal + " | " + vertical);
 
             //Transformer position du click en position dans le World
             Ray projectedPos = Camera.main.ScreenPointToRay(mousePos); //Rayon perpendiculaire au plan de la caméra qui passe par le point de clic
