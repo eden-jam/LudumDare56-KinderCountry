@@ -14,6 +14,7 @@ public class ClickDetector : MonoBehaviour
 
 	public Vector3 clickWorldPosition = Vector3.zero;
     public bool hasPlayerClicked = false;
+    public bool isPlayerHolding = false;
     public Collider groundCollider;
     public State _currentState = State.Move;
 
@@ -24,13 +25,22 @@ public class ClickDetector : MonoBehaviour
 
 	void Update()
     {
+		isPlayerHolding = Input.GetMouseButton(0);
+        if (Input.GetKeyDown(KeyCode.Mouse0) || isPlayerHolding)
+        {
+			if (_currentState == State.Move)
+			{
+				UpdateClickWorldPosition();
+			}
+		}
+
         if (Input.GetKeyDown(KeyCode.Mouse0)) //Si clic gauche appuyé
 		{
 			switch (_currentState)
 			{
 				case State.Move:
 					{
-						Move();
+						// Already done in the previous if
 					}
 					break;
 				case State.SpawnFlee:
@@ -54,13 +64,13 @@ public class ClickDetector : MonoBehaviour
 
 			hasPlayerClicked = true;
 		}
-        else
+		else
         {
-            hasPlayerClicked = false;
+			hasPlayerClicked = false;
         }
     }
 
-    private void Move()
+    private void UpdateClickWorldPosition()
 	{
 		Vector3 mousePos = Input.mousePosition;  //Récup de la position de la souris à l'écran
 
