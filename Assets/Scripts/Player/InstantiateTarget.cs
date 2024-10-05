@@ -5,7 +5,7 @@ public class InstantiateTarget : MonoBehaviour
     public ClickDetector detector;
     public CharacterMovement characterMovement;
     public GameObject target;
-    private GameObject targetInstance;
+    private GameObject targetInstance = null;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,14 +16,14 @@ public class InstantiateTarget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (detector.hasPlayerClicked == true)
         {
-            if (targetInstance)
+            if (targetInstance == null)
             {
-                Destroy(targetInstance);
+                targetInstance = Instantiate(target, detector.clickWorldPosition, Quaternion.identity);
             }
-            targetInstance = Instantiate(target, detector.clickWorldPosition,Quaternion.identity);
+
+            targetInstance.transform.position = detector.clickWorldPosition;
         }
         else if (characterMovement.destinationReached == true)
         {
