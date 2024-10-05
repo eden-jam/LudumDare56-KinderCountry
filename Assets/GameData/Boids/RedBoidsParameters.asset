@@ -15,15 +15,15 @@ MonoBehaviour:
   DisplayGizmos: 0
   BoidPrefab: {fileID: 1803561816863729719, guid: a2ce29f33ee08e24d8e00ac70156a047, type: 3}
   Type: 0
-  MaxSpeed: 5
+  MaxSpeed: 6
   AlignParameters:
     Weight: 2
     PerceptionDistance: 5
     FriendlyWeight: 1
     StrangerWeight: 0
   AttractionParameters:
-    Weight: 0
-    PerceptionDistance: 50
+    Weight: 3
+    PerceptionDistance: 15
   CohesionParameters:
     Weight: 3
     PerceptionDistance: 5
@@ -34,7 +34,7 @@ MonoBehaviour:
     MinPosition: {x: -50, y: -50}
     MaxPosition: {x: 50, y: 50}
   FleeParameters:
-    Weight: -20
+    Weight: -5
     PerceptionDistance: 5
   SeperationParameters:
     Weight: 4
@@ -46,3 +46,11 @@ MonoBehaviour:
     PerceptionDistance: 1
     FriendlyWeight: 1
     StrangerWeight: 1
+  LureParameters:
+    Weight: 1
+    PerceptionDistance: 5
+    Duration: 1
+  CryParameters:
+    Weight: 1
+    PerceptionDistance: 5
+    Duration: 1
