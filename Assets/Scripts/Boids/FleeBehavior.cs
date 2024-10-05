@@ -8,6 +8,10 @@ public class FleeBehavior : IBehavior
 	public List<Transform> FleePoints;
 	public override Vector3 UpdateBoids(in List<Boids> others)
 	{
+		if (FleeParameters.Weight == 0.0f)
+		{
+			return Vector3.zero;
+		}
 		Vector3 fleeSteering = Vector3.zero;
 		int total = 0;
 

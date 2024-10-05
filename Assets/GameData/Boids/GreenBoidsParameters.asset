@@ -10,17 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8dcbbf14e576274a9b8075ccbce15ff, type: 3}
-  m_Name: BoidsParameters
+  m_Name: GreenBoidsParameters
   m_EditorClassIdentifier: 
+  BoidPrefab: {fileID: 4485510235916409497, guid: fd6d360aaee54e443a88bf3242caea42, type: 3}
+  Type: 1
+  MaxSpeed: 5
   AlignParameters:
-    Weight: 5
+    Weight: 1
     PerceptionDistance: 5
+    FriendlyWeight: 2
+    StrangerWeight: 0.5
   AttractionParameters:
     Weight: 1
-    PerceptionDistance: 50
+    PerceptionDistance: 10
   CohesionParameters:
-    Weight: 1
+    Weight: 2
     PerceptionDistance: 5
+    FriendlyWeight: 2
+    StrangerWeight: 0.5
   EdgeAvoidParameters:
     Weight: 10
     MinPosition: {x: -50, y: -50}
@@ -29,5 +36,7 @@ MonoBehaviour:
     Weight: 50
     PerceptionDistance: 5
   SeperationParameters:
-    Weight: 2
-    PerceptionDistance: 4
+    Weight: 4
+    PerceptionDistance: 1.5
+    FriendlyWeight: 1
+    StrangerWeight: 1
