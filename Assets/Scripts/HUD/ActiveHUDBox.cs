@@ -23,7 +23,7 @@ public class ActiveHUBBoc : MonoBehaviour
         playerControls.Enable();
     }
 
-    private void ToggleActiveSlot(int numValue)
+    public void ToggleActiveSlot(int numValue)
     {
         ToggleActiveHighLight(numValue - 1);
     }
