@@ -8,6 +8,10 @@ public class AttractionBehavior : IBehavior
 
 	public override Vector3 UpdateBoids(in List<Boids> others)
 	{
+		if (AttractionParameters.Weight == 0.0f)
+		{
+			return Vector3.zero;
+		}
 		Vector3 attractionSteering = Vector3.zero;
 		int total = 0;
 

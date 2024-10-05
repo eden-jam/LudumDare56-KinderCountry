@@ -2,10 +2,17 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Type
+{
+	RED,
+	GREEN,
+	BLUE
+}
+
 public class Boids : MonoBehaviour
 {
     private Rigidbody _rigidbody = null;
-    private MeshRenderer _meshRenderer = null;
+    [SerializeField] private Transform _meshRenderer = null;
 
     private SeperationBehavior _seperationBehavior = new SeperationBehavior();
     private EdgeAvoidBehavior _edgeAvoidBehavior = new EdgeAvoidBehavior();
@@ -27,12 +34,18 @@ public class Boids : MonoBehaviour
 		get { return _boidsParameters.MaxSpeed; }
 	}
 
+	public Type Type
+	{
+		get { return _boidsParameters.Type; }
+	}
+
 	private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _meshRenderer = GetComponentInChildren<MeshRenderer>();
+		_rigidbody.linearVelocity = new Vector3(Random.Range(-1.0f, 1.0f), 0.0f, Random.Range(-1.0f, 1.0f));
 
-        _meshRenderer.transform.LookAt(_rigidbody.position + _rigidbody.linearVelocity);
+
+		_meshRenderer.transform.LookAt(_rigidbody.position + _rigidbody.linearVelocity);
 	}
 
     public void Init(BoidsParameters boidsParameters)
