@@ -10,6 +10,8 @@ public class Boids : MonoBehaviour
 
     private SeperationBehavior _seperationBehavior = new SeperationBehavior();
     private EdgeAvoidBehavior _edgeAvoidBehavior = new EdgeAvoidBehavior();
+    private CohesionBehavior _cohesionBehavior = new CohesionBehavior();
+    private AlignBehavior _alignBehavior = new AlignBehavior();
 
     public Vector3 Velocity
     {
@@ -31,14 +33,20 @@ public class Boids : MonoBehaviour
         _meshRenderer.transform.LookAt(_rigidbody.position + _rigidbody.linearVelocity);
         _seperationBehavior.Init(this);
 		_edgeAvoidBehavior.Init(this);
+		_cohesionBehavior.Init(this);
+		_alignBehavior.Init(this);
 	}
 
     public void UpdateBoids(in List<Boids> others)
     {
         Vector3 separation = _seperationBehavior.UpdateBoids(others);
         Vector3 edgeAvoid = _edgeAvoidBehavior.UpdateBoids(others);
-		Velocity += separation * 1.0f * Time.deltaTime;
-		Velocity += edgeAvoid * 2.0f * Time.deltaTime;
+        Vector3 cohesion = _cohesionBehavior.UpdateBoids(others);
+        Vector3 align = _alignBehavior.UpdateBoids(others);
+		Velocity += align * 1.0f * Time.deltaTime;
+		Velocity += cohesion * 0.5f * Time.deltaTime;
+		Velocity += separation * 3.0f * Time.deltaTime;
+		Velocity += edgeAvoid * 5.0f * Time.deltaTime;
 		if (Velocity.magnitude > _maxSpeed)
 		{
 			Velocity = Velocity.normalized * _maxSpeed;

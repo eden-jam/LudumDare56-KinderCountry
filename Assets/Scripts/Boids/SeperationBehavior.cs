@@ -20,7 +20,7 @@ public class SeperationBehavior
 			{
 				continue;
 			}
-			float perception = 10.0f;
+			float perception = 3.0f;
 			Vector3 diff = _self.transform.position - other.transform.position;
 			float dist = diff.magnitude;
 			if (dist < perception)
