@@ -12,6 +12,7 @@ public class Boids : MonoBehaviour
     private EdgeAvoidBehavior _edgeAvoidBehavior = new EdgeAvoidBehavior();
     private CohesionBehavior _cohesionBehavior = new CohesionBehavior();
     private AlignBehavior _alignBehavior = new AlignBehavior();
+    private FleeBehavior _fleeBehavior = new FleeBehavior();
 
     public Vector3 Velocity
     {
@@ -35,14 +36,17 @@ public class Boids : MonoBehaviour
 		_edgeAvoidBehavior.Init(this);
 		_cohesionBehavior.Init(this);
 		_alignBehavior.Init(this);
+		_fleeBehavior.Init(this);
 	}
 
-    public void UpdateBoids(in List<Boids> others)
+    public void UpdateBoids(in List<Boids> others, in List<Transform> fleePoint)
     {
         Vector3 separation = _seperationBehavior.UpdateBoids(others);
         Vector3 edgeAvoid = _edgeAvoidBehavior.UpdateBoids(others);
         Vector3 cohesion = _cohesionBehavior.UpdateBoids(others);
         Vector3 align = _alignBehavior.UpdateBoids(others);
+        Vector3 flee = _fleeBehavior.UpdateBoids(others, fleePoint);
+		Velocity += flee * 5.0f * Time.deltaTime;
 		Velocity += align * 1.0f * Time.deltaTime;
 		Velocity += cohesion * 0.5f * Time.deltaTime;
 		Velocity += separation * 3.0f * Time.deltaTime;
