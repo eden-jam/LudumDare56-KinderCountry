@@ -4,8 +4,8 @@ public class CharacterMovement : MonoBehaviour
 {
     public CharacterController controller;
     public ClickDetector detector;
-    
-    public float playerSpeed = 1.0f;
+    public float playerSpeed = 10f;
+    public bool destinationReached = false;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -18,13 +18,19 @@ public class CharacterMovement : MonoBehaviour
     void Update()
     {
         Vector3 destination = detector.clickWorldPosition; 
-        Vector3 move = destination - transform.position;
-        if (move.magnitude <= Mathf.Epsilon)
+        Vector3 move = destination - transform.position; //Vecteur de déplacement
+
+        if (move.magnitude <= 1) //Si on est très proche, on stoppe
         {
+            destinationReached = true;
             return;
         }
-        
-        controller.Move(move * Time.deltaTime * playerSpeed);
+        else
+        {
+            destinationReached = false;
+        }
+
+        controller.Move(move.normalized * Time.deltaTime * playerSpeed); ;  //Déplacement à chaque frame selon la playerSpeed
 
         if (move != Vector3.zero)
         {

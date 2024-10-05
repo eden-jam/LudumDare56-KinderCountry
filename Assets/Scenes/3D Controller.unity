@@ -425,6 +425,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1052233027 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5048441097686726159, guid: 39916b3e1babcdf4482305970b43637d, type: 3}
+  m_PrefabInstance: {fileID: 8856009450980754291}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a058cdb63188c4db084d6901db7c39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1678567982
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,6 +555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1955517482}
   - component: {fileID: 1955517483}
+  - component: {fileID: 1955517484}
   m_Layer: 0
   m_Name: Input Manager
   m_TagString: Untagged
@@ -581,6 +593,21 @@ MonoBehaviour:
   clickWorldPosition: {x: 0, y: 0, z: 0}
   hasPlayerClicked: 0
   groundCollider: {fileID: 1678567983}
+--- !u!114 &1955517484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955517481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99bc046b48388d40b129dc252a9ef45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detector: {fileID: 1955517483}
+  characterMovement: {fileID: 1052233027}
+  target: {fileID: 3686178395453067236, guid: 662918042b78a0a47839a1f6cde741ee, type: 3}
 --- !u!1001 &8856009450980754291
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -597,9 +624,13 @@ PrefabInstance:
       propertyPath: detector
       value: 
       objectReference: {fileID: 1955517483}
+    - target: {fileID: 5048441097686726159, guid: 39916b3e1babcdf4482305970b43637d, type: 3}
+      propertyPath: playerSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 9073354844286644925, guid: 39916b3e1babcdf4482305970b43637d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9073354844286644925, guid: 39916b3e1babcdf4482305970b43637d, type: 3}
       propertyPath: m_LocalPosition.y
