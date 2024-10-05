@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8dcbbf14e576274a9b8075ccbce15ff, type: 3}
+  m_Name: BlueBoidsParameters
+  m_EditorClassIdentifier: 
+  BoidPrefab: {fileID: 2057233022265892382, guid: f9c95109289a4b145bc430ff7536ce8e, type: 3}
+  Type: 2
+  MaxSpeed: 5
+  AlignParameters:
+    Weight: 0
+    PerceptionDistance: 5
+    FriendlyWeight: 1
+    StrangerWeight: 1
+  AttractionParameters:
+    Weight: 2
+    PerceptionDistance: 20
+  CohesionParameters:
+    Weight: 0
+    PerceptionDistance: 5
+    FriendlyWeight: 1
+    StrangerWeight: 1
+  EdgeAvoidParameters:
+    Weight: 10
+    MinPosition: {x: -50, y: -50}
+    MaxPosition: {x: 50, y: 50}
+  FleeParameters:
+    Weight: 50
+    PerceptionDistance: 5
+  SeperationParameters:
+    Weight: 4
+    PerceptionDistance: 3
+    FriendlyWeight: 1
+    StrangerWeight: 1
