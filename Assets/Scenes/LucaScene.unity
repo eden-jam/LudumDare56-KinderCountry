@@ -1554,6 +1554,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1783866061}
     - target: {fileID: 5004490952680062065, guid: aabaced266ed3384a831b102779d81f6, type: 3}
+      propertyPath: _fleePoints.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5004490952680062065, guid: aabaced266ed3384a831b102779d81f6, type: 3}
       propertyPath: '_fleePoints.Array.data[0]'
       value: 
       objectReference: {fileID: 1434549668}

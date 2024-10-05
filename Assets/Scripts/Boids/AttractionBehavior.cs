@@ -24,6 +24,7 @@ public class AttractionBehavior : IBehavior
 			total++;
 		}
 
+		DebugValue = Average(attractionSteering, total) * _parameters.Weight;
 		return Average(attractionSteering, total) * _parameters.Weight;
 	}
 }

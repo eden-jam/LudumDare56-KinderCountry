@@ -15,6 +15,7 @@ public class Boids : MonoBehaviour
     [SerializeField] private Transform _meshRenderer = null;
 
     private SeperationBehavior _seperationBehavior = new SeperationBehavior();
+    private SeperationBehavior _antiCollapseBehavior = new SeperationBehavior();
     private EdgeAvoidBehavior _edgeAvoidBehavior = new EdgeAvoidBehavior();
     private CohesionBehavior _cohesionBehavior = new CohesionBehavior();
     private AlignBehavior _alignBehavior = new AlignBehavior();
@@ -57,6 +58,7 @@ public class Boids : MonoBehaviour
 		_edgeAvoidBehavior.Init(this, _boidsParameters.EdgeAvoidParameters);
 		_fleeBehavior.Init(this, _boidsParameters.FleeParameters);
 		_seperationBehavior.Init(this, _boidsParameters.SeperationParameters);
+		_antiCollapseBehavior.Init(this, _boidsParameters.AntiCollapseParameters);
 	}
 
     public void UpdateBoids(in List<Boids> others, in List<Transform> fleePoint, in Transform attractionPoint)
@@ -69,6 +71,7 @@ public class Boids : MonoBehaviour
 		_fleeBehavior.FleePoints = fleePoint;
 		Vector3 flee = _fleeBehavior.UpdateBoids(others);
         Vector3 separation = _seperationBehavior.UpdateBoids(others);
+        Vector3 antiCollapse = _antiCollapseBehavior.UpdateBoids(others);
 
 		Velocity += align * Time.deltaTime;
 		Velocity += attraction * Time.deltaTime;
@@ -76,10 +79,31 @@ public class Boids : MonoBehaviour
 		Velocity += edgeAvoid * Time.deltaTime;
 		Velocity += flee * Time.deltaTime;
 		Velocity += separation * Time.deltaTime;
+		Velocity += antiCollapse * Time.deltaTime;
 
 		if (Velocity.magnitude > _boidsParameters.MaxSpeed)
 		{
 			Velocity = Velocity.normalized * _boidsParameters.MaxSpeed;
 		}
+	}
+
+	private void OnDrawGizmos()
+	{
+		if (_boidsParameters.DisplayGizmos == false)
+		{
+			return;
+		}
+		Gizmos.color = Color.red;
+		Gizmos.DrawRay(transform.position, _alignBehavior.DebugValue);
+		Gizmos.color = Color.green;
+		Gizmos.DrawRay(transform.position, _attractionBehavior.DebugValue);
+		Gizmos.color = Color.blue;
+		Gizmos.DrawRay(transform.position, _cohesionBehavior.DebugValue);
+		Gizmos.color = Color.yellow;
+		Gizmos.DrawRay(transform.position, _edgeAvoidBehavior.DebugValue);
+		Gizmos.color = Color.magenta;
+		Gizmos.DrawRay(transform.position, _fleeBehavior.DebugValue);
+		Gizmos.color = Color.cyan;
+		Gizmos.DrawRay(transform.position, _seperationBehavior.DebugValue);
 	}
 }

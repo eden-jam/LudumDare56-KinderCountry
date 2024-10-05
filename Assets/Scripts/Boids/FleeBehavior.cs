@@ -12,6 +12,7 @@ public class FleeBehavior : IBehavior
 		{
 			return Vector3.zero;
 		}
+		
 		Vector3 fleeSteering = Vector3.zero;
 		int total = 0;
 
@@ -27,6 +28,7 @@ public class FleeBehavior : IBehavior
 			}
 		}
 
-		return Average(fleeSteering, total);
+		DebugValue = Average(fleeSteering, total) * _parameters.Weight;
+		return Average(fleeSteering, total) * _parameters.Weight;
 	}
 }
