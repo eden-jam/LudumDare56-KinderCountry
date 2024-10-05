@@ -23,6 +23,7 @@ public class Boids : MonoBehaviour
     private AttractionBehavior _attractionBehavior = new AttractionBehavior();
     private LureBehavior _lureBehavior = new LureBehavior();
     private CryBehavior _cryBehavior = new CryBehavior();
+    private AttractionBehavior _puddleAttraction = new AttractionBehavior();
 
     private BoidsParameters _boidsParameters = null;
 
@@ -31,7 +32,10 @@ public class Boids : MonoBehaviour
     public Vector3 Velocity
     {
         get { return _rigidbody.linearVelocity; }
-        set { _rigidbody.linearVelocity = value; }
+        set 
+		{
+			_rigidbody.linearVelocity = new Vector3(value.x, _rigidbody.linearVelocity.y, value.z);
+		}
 	}
 
 	public float MaxSpeed
@@ -72,18 +76,21 @@ public class Boids : MonoBehaviour
 		_antiCollapseBehavior.Init(this, _boidsParameters.AntiCollapseParameters);
 		_lureBehavior.Init(this, _boidsParameters.LureParameters);
 		_cryBehavior.Init(this, _boidsParameters.CryParameters);
+		_puddleAttraction.Init(this, _boidsParameters.PuddleAttraction);
 	}
 
 	public void Lure(Transform transform)
 	{
 		_lureBehavior.AttractionPoint = transform;
-		_lureBehavior.ResetTimer();
+		_lureBehavior.StartTimer();
+		_cryBehavior.ResetTimer();
 	}
 
 	public void Cry(Transform transform)
 	{
 		_cryBehavior.AttractionPoint = transform;
-		_cryBehavior.ResetTimer();
+		_cryBehavior.StartTimer();
+		_lureBehavior.ResetTimer();
 	}
 
 	public void UpdateBoids(in List<Boids> others, in List<Transform> fleePoint, in Transform attractionPoint)
@@ -114,7 +121,7 @@ public class Boids : MonoBehaviour
 		}
 		else
 		{
-			Vector3 attraction = _attractionBehavior.UpdateBoids(others);
+			Vector3 attraction = _puddleAttraction.UpdateBoids(others);
 			Vector3 antiCollapse = _antiCollapseBehavior.UpdateBoids(others);
 
 			Velocity += attraction * Time.deltaTime;
@@ -157,9 +164,6 @@ public class Boids : MonoBehaviour
 	public void Finish(Transform finish)
 	{
 		_hasFinish = true;
-		_attractionBehavior.AttractionPoint = finish;
-		_attractionBehavior.AttractionParameters.Weight = 10;
-		_attractionBehavior.AttractionParameters.PerceptionDistance = 50;
-		_antiCollapseBehavior.SeperationParameters.PerceptionDistance = 0.25f;
+		_puddleAttraction.AttractionPoint = finish;
 	}
 }

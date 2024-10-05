@@ -16,7 +16,7 @@ public class InstantiateTarget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (detector.hasPlayerClicked == true)
+        if (detector.hasPlayerClicked == true || detector.isPlayerHolding == true)
         {
             if (targetInstance == null)
             {
