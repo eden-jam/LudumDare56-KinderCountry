@@ -10,7 +10,7 @@ public class BoidsParameters : ScriptableObject
 	public AlignParameters AlignParameters = new AlignParameters();
 	public AttractionParameters AttractionParameters = new AttractionParameters();
 	public CohesionParameters CohesionParameters = new CohesionParameters();
-	public EdgeAvoidParameters EdgeAvoidParameters = new EdgeAvoidParameters() { MinPosition = new Vector2(-75.0f, -75.0f), MaxPosition = new Vector2(75.0f, 75.0f) };
+	public EdgeAvoidParameters EdgeAvoidParameters = new EdgeAvoidParameters() { MinPosition = new Vector2(-90.0f, -105.0f), MaxPosition = new Vector2(100.0f, 90.0f) };
 	public FleeParameters FleeParameters = new FleeParameters();
 	public SeperationParameters SeperationParameters = new SeperationParameters();
 	public SeperationParameters AntiCollapseParameters = new SeperationParameters() { Weight = 25.0f, PerceptionDistance = 1.0f, FriendlyWeight = 1.0f, StrangerWeight = 1.0f };

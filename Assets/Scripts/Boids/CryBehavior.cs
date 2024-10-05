@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 public class CryBehavior : IBehavior
 {
@@ -33,6 +34,7 @@ public class CryBehavior : IBehavior
 			_timer -= Time.deltaTime;
 		}
 
+		Profiler.BeginSample(GetType().Name);
 		Vector3 attractionSteering = Vector3.zero;
 		int total = 0;
 
@@ -46,6 +48,7 @@ public class CryBehavior : IBehavior
 		}
 
 		DebugValue = Average(attractionSteering, total) * _parameters.Weight;
+		Profiler.EndSample();
 		return Average(attractionSteering, total) * _parameters.Weight;
 	}
 }

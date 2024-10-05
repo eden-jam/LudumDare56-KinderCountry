@@ -31,8 +31,6 @@ MonoBehaviour:
     StrangerWeight: 0
   EdgeAvoidParameters:
     Weight: 10
-    MinPosition: {x: -50, y: -50}
-    MaxPosition: {x: 50, y: 50}
   FleeParameters:
     Weight: 5
     PerceptionDistance: 10
@@ -54,3 +52,6 @@ MonoBehaviour:
     Weight: -50
     PerceptionDistance: 20
     Duration: 5
+  PuddleAttraction:
+    Weight: 2
+    PerceptionDistance: 50

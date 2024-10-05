@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 public class AttractionBehavior : IBehavior
 {
@@ -15,6 +16,7 @@ public class AttractionBehavior : IBehavior
 		{
 			return Vector3.zero;
 		}
+		Profiler.BeginSample(GetType().Name);
 		Vector3 attractionSteering = Vector3.zero;
 		int total = 0;
 
@@ -28,6 +30,7 @@ public class AttractionBehavior : IBehavior
 		}
 
 		DebugValue = Average(attractionSteering, total) * _parameters.Weight;
+		Profiler.EndSample();
 		return Average(attractionSteering, total) * _parameters.Weight;
 	}
 }
