@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8dcbbf14e576274a9b8075ccbce15ff, type: 3}
   m_Name: BlueBoidsParameters
   m_EditorClassIdentifier: 
+  DisplayGizmos: 1
   BoidPrefab: {fileID: 2057233022265892382, guid: f9c95109289a4b145bc430ff7536ce8e, type: 3}
   Type: 2
   MaxSpeed: 5
@@ -40,3 +41,16 @@ MonoBehaviour:
     PerceptionDistance: 3
     FriendlyWeight: 1
     StrangerWeight: 1
+  AntiCollapseParameters:
+    Weight: 25
+    PerceptionDistance: 1
+    FriendlyWeight: 1
+    StrangerWeight: 1
+  LureParameters:
+    Weight: 50
+    PerceptionDistance: 20
+    Duration: 5
+  CryParameters:
+    Weight: -50
+    PerceptionDistance: 20
+    Duration: 5

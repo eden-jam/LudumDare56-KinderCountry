@@ -23,6 +23,8 @@ public class Boids : MonoBehaviour
     private AlignBehavior _alignBehavior = new AlignBehavior();
     private FleeBehavior _fleeBehavior = new FleeBehavior();
     private AttractionBehavior _attractionBehavior = new AttractionBehavior();
+    private LureBehavior _lureBehavior = new LureBehavior();
+    private CryBehavior _cryBehavior = new CryBehavior();
 
     private BoidsParameters _boidsParameters = null;
 
@@ -61,9 +63,23 @@ public class Boids : MonoBehaviour
 		_fleeBehavior.Init(this, _boidsParameters.FleeParameters);
 		_seperationBehavior.Init(this, _boidsParameters.SeperationParameters);
 		_antiCollapseBehavior.Init(this, _boidsParameters.AntiCollapseParameters);
+		_lureBehavior.Init(this, _boidsParameters.LureParameters);
+		_cryBehavior.Init(this, _boidsParameters.CryParameters);
 	}
 
-    public void UpdateBoids(in List<Boids> others, in List<Transform> fleePoint, in Transform attractionPoint)
+	public void Lure(Transform transform)
+	{
+		_lureBehavior.AttractionPoint = transform;
+		_lureBehavior.ResetTimer();
+	}
+
+	public void Cry(Transform transform)
+	{
+		_cryBehavior.AttractionPoint = transform;
+		_cryBehavior.ResetTimer();
+	}
+
+	public void UpdateBoids(in List<Boids> others, in List<Transform> fleePoint, in Transform attractionPoint)
     {
         Vector3 align = _alignBehavior.UpdateBoids(others);
 		_attractionBehavior.AttractionPoint = attractionPoint;
@@ -74,6 +90,8 @@ public class Boids : MonoBehaviour
 		Vector3 flee = _fleeBehavior.UpdateBoids(others);
         Vector3 separation = _seperationBehavior.UpdateBoids(others);
         Vector3 antiCollapse = _antiCollapseBehavior.UpdateBoids(others);
+        Vector3 lure = _lureBehavior.UpdateBoids(others);
+        Vector3 cry = _cryBehavior.UpdateBoids(others);
 
 		Velocity += align * Time.deltaTime;
 		Velocity += attraction * Time.deltaTime;
@@ -82,6 +100,8 @@ public class Boids : MonoBehaviour
 		Velocity += flee * Time.deltaTime;
 		Velocity += separation * Time.deltaTime;
 		Velocity += antiCollapse * Time.deltaTime;
+		Velocity += lure * Time.deltaTime;
+		Velocity += cry * Time.deltaTime;
 
 		if (Velocity.magnitude > _boidsParameters.MaxSpeed)
 		{
@@ -95,6 +115,7 @@ public class Boids : MonoBehaviour
 		{
 			return;
 		}
+
 		Gizmos.color = Color.red;
 		Gizmos.DrawRay(transform.position, _alignBehavior.DebugValue);
 		Gizmos.color = Color.green;
@@ -107,5 +128,9 @@ public class Boids : MonoBehaviour
 		Gizmos.DrawRay(transform.position, _fleeBehavior.DebugValue);
 		Gizmos.color = Color.cyan;
 		Gizmos.DrawRay(transform.position, _seperationBehavior.DebugValue);
+		Gizmos.color = Color.black;
+		Gizmos.DrawRay(transform.position, _lureBehavior.DebugValue);
+		Gizmos.color = Color.white;
+		Gizmos.DrawRay(transform.position, _cryBehavior.DebugValue);
 	}
 }

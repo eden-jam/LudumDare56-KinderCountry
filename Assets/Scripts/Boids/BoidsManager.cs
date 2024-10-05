@@ -46,12 +46,18 @@ public class BoidsManager : MonoBehaviour
 
 	public void Lure()
 	{
-		Debug.Log("Lure");
+		foreach (Boids boid in _boids)
+		{
+			boid.Lure(_player);
+		}
 	}
 
 	public void Cry()
 	{
-		Debug.Log("Cry");
+		foreach (Boids boid in _boids)
+		{
+			boid.Cry(_player);
+		}
 	}
 
 	public void SpawnFlee(Vector3 position)
