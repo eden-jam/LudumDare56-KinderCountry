@@ -20,7 +20,7 @@ public class CohesionBehavior
 			{
 				continue;
 			}
-			float perception = 20.0f;
+			float perception = 10.0f;
 			Vector3 diff = _self.transform.position - other.transform.position;
 			float dist = diff.magnitude;
 			if (dist < perception)
