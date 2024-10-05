@@ -3,8 +3,11 @@ using UnityEngine;
 
 public class AttractionBehavior : IBehavior
 {
+	private bool _isFollowingPlayer = false;
+
 	public Transform AttractionPoint;
 	public AttractionParameters AttractionParameters => _parameters as AttractionParameters;
+	public bool IsFollowingPlayer => _isFollowingPlayer;
 
 	public override Vector3 UpdateBoids(in List<Boids> others)
 	{
@@ -18,7 +21,7 @@ public class AttractionBehavior : IBehavior
 		float perception = AttractionParameters.PerceptionDistance;
 		Vector3 diff = _self.transform.position - AttractionPoint.transform.position;
 		float dist = diff.magnitude;
-		if (dist < perception)
+		if (_isFollowingPlayer = dist < perception)
 		{
 			attractionSteering -= diff.normalized;
 			total++;

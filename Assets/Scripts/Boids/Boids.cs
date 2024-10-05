@@ -12,6 +12,7 @@ public class Boids : MonoBehaviour
 {
     private Rigidbody _rigidbody = null;
     [SerializeField] private Transform _meshRenderer = null;
+    [SerializeField] private Animator _animator = null;
 
     private SeperationBehavior _seperationBehavior = new SeperationBehavior();
     private SeperationBehavior _antiCollapseBehavior = new SeperationBehavior();
@@ -53,6 +54,8 @@ public class Boids : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
 		_rigidbody.linearVelocity = new Vector3(Random.Range(-1.0f, 1.0f), 0.0f, Random.Range(-1.0f, 1.0f));
 
+		// Do we want to listen to events for some reasons,
+		_animator.fireEvents = false;
 
 		_meshRenderer.transform.LookAt(_rigidbody.position + _rigidbody.linearVelocity);
 	}
@@ -117,6 +120,8 @@ public class Boids : MonoBehaviour
 			Velocity += attraction * Time.deltaTime;
 			Velocity += antiCollapse * Time.deltaTime;
 		}
+
+		_animator.SetBool("IsControlled", _attractionBehavior.IsFollowingPlayer);
 
 		if (Velocity.magnitude > _boidsParameters.MaxSpeed)
 		{
