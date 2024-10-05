@@ -12,6 +12,7 @@ public class Boids : MonoBehaviour
 {
     private Rigidbody _rigidbody = null;
     [SerializeField] private Transform _meshRenderer = null;
+    [SerializeField] private Animator _animator = null;
 
     private SeperationBehavior _seperationBehavior = new SeperationBehavior();
     private SeperationBehavior _antiCollapseBehavior = new SeperationBehavior();
@@ -24,6 +25,8 @@ public class Boids : MonoBehaviour
     private CryBehavior _cryBehavior = new CryBehavior();
 
     private BoidsParameters _boidsParameters = null;
+
+	private bool _hasFinish = false;
 
     public Vector3 Velocity
     {
@@ -41,11 +44,18 @@ public class Boids : MonoBehaviour
 		get { return _boidsParameters.Type; }
 	}
 
+	public bool HasFinish
+	{
+		get { return _hasFinish; }
+	}
+
 	private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
 		_rigidbody.linearVelocity = new Vector3(Random.Range(-1.0f, 1.0f), 0.0f, Random.Range(-1.0f, 1.0f));
 
+		// Do we want to listen to events for some reasons,
+		_animator.fireEvents = false;
 
 		_meshRenderer.transform.LookAt(_rigidbody.position + _rigidbody.linearVelocity);
 	}
@@ -77,28 +87,41 @@ public class Boids : MonoBehaviour
 	}
 
 	public void UpdateBoids(in List<Boids> others, in List<Transform> fleePoint, in Transform attractionPoint)
-    {
-        Vector3 align = _alignBehavior.UpdateBoids(others);
-		_attractionBehavior.AttractionPoint = attractionPoint;
-        Vector3 attraction = _attractionBehavior.UpdateBoids(others);
-        Vector3 cohesion = _cohesionBehavior.UpdateBoids(others);
-        Vector3 edgeAvoid = _edgeAvoidBehavior.UpdateBoids(others);
-		_fleeBehavior.FleePoints = fleePoint;
-		Vector3 flee = _fleeBehavior.UpdateBoids(others);
-        Vector3 separation = _seperationBehavior.UpdateBoids(others);
-        Vector3 antiCollapse = _antiCollapseBehavior.UpdateBoids(others);
-        Vector3 lure = _lureBehavior.UpdateBoids(others);
-        Vector3 cry = _cryBehavior.UpdateBoids(others);
+	{
+		if (_hasFinish == false)
+		{
+			Vector3 align = _alignBehavior.UpdateBoids(others);
+			_attractionBehavior.AttractionPoint = attractionPoint;
+			Vector3 attraction = _attractionBehavior.UpdateBoids(others);
+			Vector3 cohesion = _cohesionBehavior.UpdateBoids(others);
+			Vector3 edgeAvoid = _edgeAvoidBehavior.UpdateBoids(others);
+			_fleeBehavior.FleePoints = fleePoint;
+			Vector3 flee = _fleeBehavior.UpdateBoids(others);
+			Vector3 separation = _seperationBehavior.UpdateBoids(others);
+			Vector3 antiCollapse = _antiCollapseBehavior.UpdateBoids(others);
+			Vector3 lure = _lureBehavior.UpdateBoids(others);
+			Vector3 cry = _cryBehavior.UpdateBoids(others);
 
-		Velocity += align * Time.deltaTime;
-		Velocity += attraction * Time.deltaTime;
-		Velocity += cohesion * Time.deltaTime;
-		Velocity += edgeAvoid * Time.deltaTime;
-		Velocity += flee * Time.deltaTime;
-		Velocity += separation * Time.deltaTime;
-		Velocity += antiCollapse * Time.deltaTime;
-		Velocity += lure * Time.deltaTime;
-		Velocity += cry * Time.deltaTime;
+			Velocity += align * Time.deltaTime;
+			Velocity += attraction * Time.deltaTime;
+			Velocity += cohesion * Time.deltaTime;
+			Velocity += edgeAvoid * Time.deltaTime;
+			Velocity += flee * Time.deltaTime;
+			Velocity += separation * Time.deltaTime;
+			Velocity += antiCollapse * Time.deltaTime;
+			Velocity += lure * Time.deltaTime;
+			Velocity += cry * Time.deltaTime;
+		}
+		else
+		{
+			Vector3 attraction = _attractionBehavior.UpdateBoids(others);
+			Vector3 antiCollapse = _antiCollapseBehavior.UpdateBoids(others);
+
+			Velocity += attraction * Time.deltaTime;
+			Velocity += antiCollapse * Time.deltaTime;
+		}
+
+		_animator.SetBool("IsControlled", _attractionBehavior.IsFollowingPlayer);
 
 		if (Velocity.magnitude > _boidsParameters.MaxSpeed)
 		{
@@ -129,5 +152,14 @@ public class Boids : MonoBehaviour
 		Gizmos.DrawRay(transform.position, _lureBehavior.DebugValue);
 		Gizmos.color = Color.white;
 		Gizmos.DrawRay(transform.position, _cryBehavior.DebugValue);
+	}
+
+	public void Finish(Transform finish)
+	{
+		_hasFinish = true;
+		_attractionBehavior.AttractionPoint = finish;
+		_attractionBehavior.AttractionParameters.Weight = 10;
+		_attractionBehavior.AttractionParameters.PerceptionDistance = 50;
+		_antiCollapseBehavior.SeperationParameters.PerceptionDistance = 0.25f;
 	}
 }
