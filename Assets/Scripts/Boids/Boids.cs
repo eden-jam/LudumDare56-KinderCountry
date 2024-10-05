@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,8 +10,6 @@ public enum Type
 
 public class Boids : MonoBehaviour
 {
-	public int Life = 100;
-
     private Rigidbody _rigidbody = null;
     [SerializeField] private Transform _meshRenderer = null;
 
