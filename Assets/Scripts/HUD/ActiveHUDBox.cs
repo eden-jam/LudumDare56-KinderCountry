@@ -14,7 +14,7 @@ public class ActiveHUBBoc : MonoBehaviour
 
     private void Start()
     {
-        playerControls.Inventory.Keyboard.performed += ctx => ToogleActiveSlot((int)ctx.ReadValue<float>());
+        playerControls.Inventory.Keyboard.performed += ctx => ToggleActiveSlot((int)ctx.ReadValue<float>());
 
     }
 
