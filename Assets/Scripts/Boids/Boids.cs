@@ -9,6 +9,7 @@ public class Boids : MonoBehaviour
     [SerializeField] private float _maxSpeed = 5.0f;
 
     private SeperationBehavior _seperationBehavior = new SeperationBehavior();
+    private EdgeAvoidBehavior _edgeAvoidBehavior = new EdgeAvoidBehavior();
 
     public Vector3 Velocity
     {
@@ -29,12 +30,15 @@ public class Boids : MonoBehaviour
 		_rigidbody.linearVelocity = new Vector3(Random.Range(-1.0f, 1.0f), 0.0f, Random.Range(-1.0f, 1.0f)).normalized * _maxSpeed;
         _meshRenderer.transform.LookAt(_rigidbody.position + _rigidbody.linearVelocity);
         _seperationBehavior.Init(this);
+		_edgeAvoidBehavior.Init(this);
 	}
 
     public void UpdateBoids(in List<Boids> others)
     {
         Vector3 separation = _seperationBehavior.UpdateBoids(others);
-        Velocity += separation * Time.deltaTime;
+        Vector3 edgeAvoid = _edgeAvoidBehavior.UpdateBoids(others);
+		Velocity += separation * 1.0f * Time.deltaTime;
+		Velocity += edgeAvoid * 2.0f * Time.deltaTime;
 		if (Velocity.magnitude > _maxSpeed)
 		{
 			Velocity = Velocity.normalized * _maxSpeed;
