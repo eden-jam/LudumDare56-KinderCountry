@@ -160,7 +160,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 3800655685970136796}
   detector: {fileID: 0}
-  playerSpeed: 1
+  playerSpeed: 10
+  destinationReached: 0
 --- !u!1 &7501403116292913298
 GameObject:
   m_ObjectHideFlags: 0

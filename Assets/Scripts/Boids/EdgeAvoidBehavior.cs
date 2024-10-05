@@ -1,57 +1,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EdgeAvoidBehavior
+public class EdgeAvoidBehavior : IBehavior
 {
-	private Boids _self = null;
+	public EdgeAvoidParameters EdgeAvoidParameters => _parameters as EdgeAvoidParameters;
 
-	public void Init(Boids self)
-	{
-		_self = self;
-	}
-
-	public Vector3 UpdateBoids(in List<Boids> others)
+	public override Vector3 UpdateBoids(in List<Boids> others)
 	{
 		Vector3 steering = Vector2.zero;
-		float total = 0;
+		int total = 0;
 
-		Vector2 wallOffset = new Vector2(50.0f, 50.0f);
-
-		if (_self.transform.position.x < -wallOffset.x)
+		if (_self.transform.position.x < EdgeAvoidParameters.MinPosition.x)
 		{
-			Vector3 diff = new Vector3(-wallOffset.x - _self.transform.position.x, 0.0f, 0.0f);
+			Vector3 diff = new Vector3(EdgeAvoidParameters.MinPosition.x - _self.transform.position.x, 0.0f, 0.0f);
 			steering += diff;
 			total++;
 		}
 
-		if (_self.transform.position.z < -wallOffset.y)
+		if (_self.transform.position.z < EdgeAvoidParameters.MinPosition.y)
 		{
-			Vector3 diff = new Vector3(0.0f, 0.0f, -wallOffset.y - _self.transform.position.z);
+			Vector3 diff = new Vector3(0.0f, 0.0f, EdgeAvoidParameters.MinPosition.y - _self.transform.position.z);
 			steering += diff;
 			total++;
 		}
 
-		if (_self.transform.position.x > wallOffset.x)
+		if (_self.transform.position.x > EdgeAvoidParameters.MaxPosition.x)
 		{
-			Vector3 diff = new Vector3(wallOffset.x - _self.transform.position.x, 0.0f, 0.0f);
+			Vector3 diff = new Vector3(EdgeAvoidParameters.MaxPosition.x - _self.transform.position.x, 0.0f, 0.0f);
 			steering += diff;
 			total++;
 		}
 
-		if (_self.transform.position.z > wallOffset.x)
+		if (_self.transform.position.z > EdgeAvoidParameters.MaxPosition.y)
 		{
-			Vector3 diff = new Vector3(0.0f, 0.0f, wallOffset.y - _self.transform.position.z);
+			Vector3 diff = new Vector3(0.0f, 0.0f, EdgeAvoidParameters.MaxPosition.y - _self.transform.position.z);
 			steering += diff;
 			total++;
 		}
 
-		if (total > 0)
-		{
-			steering /= total;
-			steering = steering.normalized * _self.MaxSpeed;
-			steering -= _self.Velocity;
-			steering = steering.normalized * _self.MaxSpeed;
-		}
-		return steering;
+		return Average(steering, total) * _parameters.Weight;
 	}
 }

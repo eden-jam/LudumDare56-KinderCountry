@@ -1,26 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CohesionBehavior
+public class CohesionBehavior : IBehavior
 {
-	private Boids _self = null;
+	public CohesionParameters CohesionParameters => _parameters as CohesionParameters;
 
-	public void Init(Boids self)
-	{
-		_self = self;
-	}
-
-	public Vector3 UpdateBoids(in List<Boids> others)
+	public override Vector3 UpdateBoids(in List<Boids> others)
 	{
 		Vector3 cohesion = Vector2.zero;
-		float total = 0;
+		int total = 0;
 		foreach (Boids other in others)
 		{
 			if (other == _self)
 			{
 				continue;
 			}
-			float perception = 10.0f;
+			float perception = CohesionParameters.PerceptionDistance;
 			Vector3 diff = _self.transform.position - other.transform.position;
 			float dist = diff.magnitude;
 			if (dist < perception)
@@ -30,13 +25,6 @@ public class CohesionBehavior
 			}
 		}
 
-		if (total > 0)
-		{
-			cohesion /= total;
-			cohesion = cohesion.normalized * _self.MaxSpeed;
-			cohesion -= _self.Velocity;
-			cohesion = cohesion.normalized * _self.MaxSpeed;
-		}
-		return cohesion;
+		return Average(cohesion, total) * _parameters.Weight;
 	}
 }

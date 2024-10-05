@@ -9,12 +9,15 @@ public class BoidsManager : MonoBehaviour
     private List<Boids> _boids = new List<Boids>();
 	[SerializeField] private List<Transform> _fleePoints = new List<Transform>();
 	[SerializeField] private Transform _player = null;
+	[SerializeField] private BoidsParameters _boidsParameters = null;
 
 	private void Start()
 	{
         for (int i = 0; i < _count; i++)
         {
-			_boids.Add(Instantiate(_boidPrefab, transform));
+			Boids boid = Instantiate(_boidPrefab, transform);
+			boid.Init(_boidsParameters);
+			_boids.Add(boid);
 		}
     }
 

@@ -1,23 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class AttractionBehavior
+public class AttractionBehavior : IBehavior
 {
-	private Boids _self = null;
+	public Transform AttractionPoint;
+	public AttractionParameters AttractionParameters => _parameters as AttractionParameters;
 
-	public void Init(Boids self)
-	{
-		_self = self;
-	}
-
-	public Vector3 UpdateBoids(in List<Boids> others, in Transform attractionPoint)
+	public override Vector3 UpdateBoids(in List<Boids> others)
 	{
 		Vector3 attractionSteering = Vector3.zero;
-		float total = 0;
+		int total = 0;
 
-		float perception = 30.0f;
-		Vector3 diff = _self.transform.position - attractionPoint.transform.position;
+		float perception = AttractionParameters.PerceptionDistance;
+		Vector3 diff = _self.transform.position - AttractionPoint.transform.position;
 		float dist = diff.magnitude;
 		if (dist < perception)
 		{
@@ -25,14 +20,6 @@ public class AttractionBehavior
 			total++;
 		}
 
-		if (total > 0)
-		{
-			attractionSteering /= total;
-			attractionSteering = attractionSteering.normalized * _self.MaxSpeed;
-			attractionSteering -= _self.Velocity;
-			attractionSteering = attractionSteering.normalized * _self.MaxSpeed;
-		}
-
-		return attractionSteering;
+		return Average(attractionSteering, total) * _parameters.Weight;
 	}
 }

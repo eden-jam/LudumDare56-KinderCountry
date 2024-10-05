@@ -1,26 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SeperationBehavior
+public class SeperationBehavior : IBehavior
 {
-	private Boids _self = null;
+	public SeperationParameters SeperationParameters => _parameters as SeperationParameters;
 
-	public void Init(Boids self)
-	{
-		_self = self;
-	}
-
-	public Vector3 UpdateBoids(in List<Boids> others)
+	public override Vector3 UpdateBoids(in List<Boids> others)
 	{
 		Vector3 separation = Vector2.zero;
-		float total = 0;
+		int total = 0;
         foreach (Boids other in others)
         {
 			if (other == _self)
 			{
 				continue;
 			}
-			float perception = 2.0f;
+			float perception = SeperationParameters.PerceptionDistance;
 			Vector3 diff = _self.transform.position - other.transform.position;
 			float dist = diff.magnitude;
 			if (dist < perception)
@@ -30,13 +25,6 @@ public class SeperationBehavior
 			}
 		}
 
-		if (total > 0)
-		{
-			separation /= total;
-			separation = separation.normalized * _self.MaxSpeed;
-			separation -= _self.Velocity;
-			separation = separation.normalized * _self.MaxSpeed;
-		}
-		return separation;
+		return Average(separation, total) * _parameters.Weight;
 	}
 }
