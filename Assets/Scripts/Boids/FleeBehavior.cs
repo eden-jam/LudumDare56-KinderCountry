@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 public class FleeBehavior : IBehavior
 {
@@ -12,7 +13,8 @@ public class FleeBehavior : IBehavior
 		{
 			return Vector3.zero;
 		}
-		
+		Profiler.BeginSample(GetType().Name);
+
 		Vector3 fleeSteering = Vector3.zero;
 		int total = 0;
 
@@ -29,6 +31,7 @@ public class FleeBehavior : IBehavior
 		}
 
 		DebugValue = Average(fleeSteering, total) * _parameters.Weight;
+		Profiler.EndSample();
 		return Average(fleeSteering, total) * _parameters.Weight;
 	}
 }

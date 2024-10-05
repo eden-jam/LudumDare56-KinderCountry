@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 public class CohesionBehavior : IBehavior
 {
@@ -11,6 +12,7 @@ public class CohesionBehavior : IBehavior
 		{
 			return Vector3.zero;
 		}
+		Profiler.BeginSample(GetType().Name);
 		Vector3 cohesion = Vector2.zero;
 		int total = 0;
 		foreach (Boids other in others)
@@ -19,18 +21,19 @@ public class CohesionBehavior : IBehavior
 			{
 				continue;
 			}
-			float weight = other.Type == _self.Type ? CohesionParameters.FriendlyWeight : CohesionParameters.StrangerWeight;
 			float perception = CohesionParameters.PerceptionDistance;
 			Vector3 diff = _self.transform.position - other.transform.position;
-			float dist = diff.magnitude;
-			if (dist < perception)
+			float dist = diff.sqrMagnitude;
+			if (dist < perception * perception)
 			{
+				float weight = other.Type == _self.Type ? CohesionParameters.FriendlyWeight : CohesionParameters.StrangerWeight;
 				cohesion -= diff.normalized * weight;
 				total++;
 			}
 		}
 
 		DebugValue = Average(cohesion, total) * _parameters.Weight;
+		Profiler.EndSample();
 		return Average(cohesion, total) * _parameters.Weight;
 	}
 }

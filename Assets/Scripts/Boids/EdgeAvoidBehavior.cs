@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 public class EdgeAvoidBehavior : IBehavior
 {
@@ -11,6 +12,7 @@ public class EdgeAvoidBehavior : IBehavior
 		{
 			return Vector3.zero;
 		}
+		Profiler.BeginSample(GetType().Name);
 		Vector3 steering = Vector2.zero;
 		int total = 0;
 
@@ -43,6 +45,7 @@ public class EdgeAvoidBehavior : IBehavior
 		}
 
 		DebugValue = Average(steering, total) * _parameters.Weight;
+		Profiler.EndSample();
 		return Average(steering, total) * _parameters.Weight;
 	}
 }

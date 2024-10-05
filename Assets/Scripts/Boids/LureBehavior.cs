@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 public class LureBehavior : IBehavior
 {
@@ -32,6 +33,7 @@ public class LureBehavior : IBehavior
 		{
 			_timer -= Time.deltaTime;
 		}
+		Profiler.BeginSample(GetType().Name);
 
 		Vector3 attractionSteering = Vector3.zero;
 		int total = 0;
@@ -46,6 +48,7 @@ public class LureBehavior : IBehavior
 		}
 
 		DebugValue = Average(attractionSteering, total) * _parameters.Weight;
+		Profiler.EndSample();
 		return Average(attractionSteering, total) * _parameters.Weight;
 	}
 }
