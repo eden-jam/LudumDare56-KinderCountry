@@ -39,7 +39,6 @@ public class BoidsManager : MonoBehaviour
 			{
 				SoundManager.Instance.RegisterAudioSource(boid.AudioSource);
 			}
-			
 		}
     }
 
@@ -63,6 +62,7 @@ public class BoidsManager : MonoBehaviour
 
 	public void UpdateCount()
 	{
+		int old = _boids.Count - _leavingCount;
 		_leavingCount = _boids.Count;
 
 		foreach (Boids boid in _boids)
@@ -73,6 +73,7 @@ public class BoidsManager : MonoBehaviour
 			}
 		}
 
+		FinishManager.Instance.IncreaseSize(old, _boids.Count - _leavingCount);
 		if (_leavingCount <= _minCount)
 		{
 			FinishManager.Instance.Finish();
