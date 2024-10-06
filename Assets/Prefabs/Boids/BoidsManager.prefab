@@ -89,6 +89,7 @@ MonoBehaviour:
   _fleeParent: {fileID: 3451669263765491824}
   maxAudioTriggerProbability: 0.05
   _audioTimeInterval: 12
+  _minCount: 0
 --- !u!1001 &2983610943671893161
 PrefabInstance:
   m_ObjectHideFlags: 0

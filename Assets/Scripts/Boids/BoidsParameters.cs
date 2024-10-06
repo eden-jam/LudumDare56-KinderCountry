@@ -7,6 +7,7 @@ public class BoidsParameters : ScriptableObject
 	public Boids BoidPrefab;
 	public Type Type = Type.RED;
 	public float MaxSpeed = 5.0f;
+	public float KeepVelocity = 1.0f;
 	public AlignParameters AlignParameters = new AlignParameters();
 	public AttractionParameters AttractionParameters = new AttractionParameters();
 	public CohesionParameters CohesionParameters = new CohesionParameters();
