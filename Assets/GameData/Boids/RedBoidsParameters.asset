@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8dcbbf14e576274a9b8075ccbce15ff, type: 3}
   m_Name: RedBoidsParameters
   m_EditorClassIdentifier: 
-  DisplayGizmos: 0
+  DisplayGizmos: 1
   BoidPrefab: {fileID: 1803561816863729719, guid: a2ce29f33ee08e24d8e00ac70156a047, type: 3}
   Type: 0
   MaxSpeed: 6
@@ -31,8 +31,6 @@ MonoBehaviour:
     StrangerWeight: 0
   EdgeAvoidParameters:
     Weight: 10
-    MinPosition: {x: -50, y: -50}
-    MaxPosition: {x: 50, y: 50}
   FleeParameters:
     Weight: -5
     PerceptionDistance: 5
@@ -54,3 +52,6 @@ MonoBehaviour:
     Weight: 1
     PerceptionDistance: 5
     Duration: 1
+  PuddleAttraction:
+    Weight: 20
+    PerceptionDistance: 50
