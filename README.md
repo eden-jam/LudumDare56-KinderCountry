@@ -1,9 +1,11 @@
-# Puddle Of Slime
+# Puddle Of Slime [<img src="https://img.shields.io/badge/Itch.io-FA5C5C?style=for-the-badge&logo=itchdotio&logoColor=white" />](https://demonskiddy.itch.io/puddle-of-slimes) [<img src="https://img.shields.io/badge/Ludum%20Dare%20 link-EE5533" />](https://ldjam.com/events/ludum-dare/56/puddle-of-slimes)
 
-## https://demonskiddy.itch.io/puddle-of-slimes
+## Table of Contents
+1. [Story](#story)
+2. [Controls](#controls)
+3. [Credits](#credits)
 
-## https://ldjam.com/events/ludum-dare/56/puddle-of-slimes
-
+## Story
 You are the new Slimeherd. The chosen one to reunite all types of slimes to re-forme the king slime!
 
 Slimes are small creatures that live peacefully together. They tend to move in group and follow their neighbors (do you know boids???). However, they need to be grouped to form the special King Slime. 
@@ -16,8 +18,8 @@ Blue ones are excited but frightened by dog and other species.
 Red ones are slow moving slime and are likely to be distracted by dog.
 Green ones are the more disciplined and follow the guide.
 
-
-Controls: You only need the mouse to play, click on power to use it!
+## Controls
+You only need the mouse to play, click on power to use it!
 
 - Click (or hold) on the first ability to move around the level.
 - Click on the second ability to put a dog on your position.
@@ -28,66 +30,40 @@ You can also use the shortcut 1,2,3,4 on the keyboards to use this function.
 ![Capture d’écran 2024-10-06 174802.png](https://img.itch.zone/aW1nLzE4MDY0NjM4LnBuZw==/original/i%2BNQ0S.png)
 ![Capture d’écran 2024-10-06 175333.png](https://img.itch.zone/aW1nLzE4MDY0NjM2LnBuZw==/original/814yyD.png)
 
-CREDITS
+## Credits
 
 **Programmers**
-
-Luca Floreau
-
-Grégoire Boiron
-
-Benjamin Ledoux
-
-Hervé Chevallier
-
-Erwan Ousidhoum
+- Luca Floreau
+- Grégoire Boiron
+- Benjamin Ledoux
+- Hervé Chevallier
+- Erwan Ousidhoum
 
 **Game Designer**
-
-Benjamin Ledoux
-
-Hervé Chevallier
-
-Luca Floreau
-
-Grégoire Boiron
-
+- Benjamin Ledoux
+- Hervé Chevallier
+- Luca Floreau
+- Grégoire Boiron
 
 **Main UI Programmer**
-
-Erwan Ousidhoum
-
+- Erwan Ousidhoum
 
 **Music Composer & Sound Designer**
-
-Arnaud Royer
-
+- Arnaud Royer
 
 **Art & Cinematic**
-
-Alexandre Méaux
-
+- Alexandre Méaux
 
 **Problem Solver & Anger Management**
-
-Erwan Ousidhoum
-
+- Erwan Ousidhoum
 
 **Uncle Ben**
-
-Grégoire Boiron
-
+- Grégoire Boiron
 
 **Free Asset Store**
-
-Low Poly Fence Pack - Broken Vector
-
-25+ Free Stylized Textures - Game Buffs
-
-Low Poly Mushrooms Pack - Papersy
-
-Stylized Low Poly Rocks - JustCreate
-
-(URP) Simple Toon Shader - Indie Game Helper
-
-Kawaii Slimes - Awaii Studio
+- Low Poly Fence Pack - Broken Vector
+- 25+ Free Stylized Textures - Game Buffs
+- Low Poly Mushrooms Pack - Papersy
+- Stylized Low Poly Rocks - JustCreate
+- (URP) Simple Toon Shader - Indie Game Helper
+- Kawaii Slimes - Awaii Studio
