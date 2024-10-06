@@ -520,7 +520,7 @@ Transform:
   m_GameObject: {fileID: 536931808}
   serializedVersion: 2
   m_LocalRotation: {x: 0.3419029, y: -0.024598263, z: 0.008953034, w: 0.9393707}
-  m_LocalPosition: {x: 0, y: 46, z: -50}
+  m_LocalPosition: {x: 0, y: 45, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -977,11 +977,6 @@ TerrainCollider:
   m_CorrespondingSourceObject: {fileID: 6558771249464863105, guid: b6dc9d5515b7a5e49b705414e07e8287, type: 3}
   m_PrefabInstance: {fileID: 2013598168}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1393584890 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6106650800484155954, guid: 34cc53dea1a0b8545b7798b0d36c5f95, type: 3}
-  m_PrefabInstance: {fileID: 95252774}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1490825694 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 929400724324599394, guid: 34cc53dea1a0b8545b7798b0d36c5f95, type: 3}
@@ -993,6 +988,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47a058cdb63188c4db084d6901db7c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1490825695 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1377614601335562861, guid: 34cc53dea1a0b8545b7798b0d36c5f95, type: 3}
+  m_PrefabInstance: {fileID: 95252774}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1545146907
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1056,7 +1056,7 @@ PrefabInstance:
     - target: {fileID: 5004490952680062065, guid: aabaced266ed3384a831b102779d81f6, type: 3}
       propertyPath: _player
       value: 
-      objectReference: {fileID: 1393584890}
+      objectReference: {fileID: 1490825695}
     - target: {fileID: 7970824752603205200, guid: aabaced266ed3384a831b102779d81f6, type: 3}
       propertyPath: m_Name
       value: BoidsManager
@@ -1191,7 +1191,7 @@ PrefabInstance:
     - target: {fileID: 298537311885105755, guid: 4b70d654693adbc4dbab18573f0e7ecc, type: 3}
       propertyPath: Target.TrackingTarget
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1490825695}
     - target: {fileID: 1484566941960729478, guid: 4b70d654693adbc4dbab18573f0e7ecc, type: 3}
       propertyPath: m_Name
       value: CInemachine camera
@@ -1202,7 +1202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3694114845693968353, guid: 4b70d654693adbc4dbab18573f0e7ecc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 46
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 3694114845693968353, guid: 4b70d654693adbc4dbab18573f0e7ecc, type: 3}
       propertyPath: m_LocalPosition.z
