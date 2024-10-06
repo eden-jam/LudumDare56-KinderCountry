@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _meshRenderer: {fileID: 7400174455807129030}
   _animator: {fileID: 2071382753580452221}
+  _audioSource: {fileID: 7630077221574331132}
 --- !u!54 &5562338374232074438
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -84,7 +85,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7044461302922186308}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: d2d5a626ef373c2408443a8f34f19025, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -111,7 +112,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
