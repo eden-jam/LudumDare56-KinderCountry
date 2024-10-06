@@ -306,7 +306,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "<b>Programmers</b>\r\nLuca Floreau\r\nGr\xE9goire Boiron\r\nBenjamin Ledoux\r\nHerv\xE9
-    Chevallier\r\nErwan Ousidhoum\r\nGame Designer\r\nBenjamin Ledoux\r\nHerv\xE9
+    Chevallier\r\nErwan Ousidhoum\n\r\n<b>Game Designer</b>\r\nBenjamin Ledoux\r\nHerv\xE9
     Chevallier\r\nLuca Floreau\r\nGr\xE9goire Boiron\n\r\n<b>Main UI Programmer</b>\r\nErwan
     Ousidhoum\n\r\n<b>Music Composer & Sound Designer</b>\r\nArnaud Royer\r\n\n<b>Art
     & Cinematic</b>\r\nAlexandre M\xE9aux\r\n\n<b>Problem Solver & Anger Management</b>\r\nErwan
