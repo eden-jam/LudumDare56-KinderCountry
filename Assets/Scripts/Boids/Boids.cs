@@ -13,6 +13,7 @@ public class Boids : MonoBehaviour
     private Rigidbody _rigidbody = null;
     [SerializeField] private Transform _meshRenderer = null;
     [SerializeField] private Animator _animator = null;
+    [SerializeField] private AudioSource _audioSource = null;
 
     private SeperationBehavior _seperationBehavior = new SeperationBehavior();
     private SeperationBehavior _antiCollapseBehavior = new SeperationBehavior();
@@ -28,8 +29,11 @@ public class Boids : MonoBehaviour
     private BoidsParameters _boidsParameters = null;
 
 	private bool _hasFinish = false;
+	private float _triggerSoundProbability = 0.0f;
+	private float _audioTimeInterval = 0.0f;
+	private float _lastTimePlayed = 0.0f;
 
-    public Vector3 Velocity
+	public Vector3 Velocity
     {
         get { return _rigidbody.linearVelocity; }
         set 
@@ -53,6 +57,11 @@ public class Boids : MonoBehaviour
 		get { return _hasFinish; }
 	}
 
+	public AudioSource AudioSource
+	{
+		get { return _audioSource; }
+	}
+
 	private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -60,13 +69,16 @@ public class Boids : MonoBehaviour
 
 		// Do we want to listen to events for some reasons,
 		_animator.fireEvents = false;
+		_lastTimePlayed = Random.Range(0.0f, 20.0f);
 
 		_meshRenderer.transform.LookAt(_rigidbody.position + _rigidbody.linearVelocity);
 	}
 
-    public void Init(BoidsParameters boidsParameters)
+    public void Init(BoidsParameters boidsParameters, float triggerSoundProbability, float audioTimeInterval)
 	{
         _boidsParameters = boidsParameters;
+		_triggerSoundProbability = triggerSoundProbability;
+		_audioTimeInterval = audioTimeInterval;
 		_alignBehavior.Init(this, _boidsParameters.AlignParameters);
 		_attractionBehavior.Init(this, _boidsParameters.AttractionParameters);
 		_cohesionBehavior.Init(this, _boidsParameters.CohesionParameters);
@@ -133,6 +145,18 @@ public class Boids : MonoBehaviour
 		if (Velocity.magnitude > _boidsParameters.MaxSpeed)
 		{
 			Velocity = Velocity.normalized * _boidsParameters.MaxSpeed;
+		}
+	}
+
+	public void TriggerSoundIfNeeded()
+	{
+		// Play a sound if the random is above the probability set.
+		_lastTimePlayed += Time.deltaTime;
+		float random = Random.Range(0.0f, 1.0f);
+		if (random < _triggerSoundProbability && _lastTimePlayed >= _audioTimeInterval)
+		{
+			SoundManager.Instance.PlayAudioSource(AudioSource);
+			_lastTimePlayed = 0.0f;
 		}
 	}
 

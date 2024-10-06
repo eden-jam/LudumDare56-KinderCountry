@@ -13,6 +13,8 @@ public class BoidsManager : MonoBehaviour
 	[SerializeField] private List<BoidsParameters> _boidsParameters = null;
 	[SerializeField] private GameObject _fleePrefab = null;
 	[SerializeField] private Transform _fleeParent = null;
+	[SerializeField][Range(0,1)] private float maxAudioTriggerProbability = 0.0f;
+	[SerializeField] private float _audioTimeInterval = 6.0f;
 	private int _leavingCount = 100;
 
 	private void Awake()
@@ -22,13 +24,21 @@ public class BoidsManager : MonoBehaviour
 
 	private void Start()
 	{
+		Debug.Assert(SoundManager.Instance != null, "Add the sound manager to the scene if you want to hear boids sounds !");
+
 		for (int i = 0; i < _count; i++)
         {
 			BoidsParameters boidParameters = _boidsParameters[Random.Range(0, _boidsParameters.Count)];
 			Vector3 boidsPosition = new Vector3(Random.Range(-90.0f, 100.0f), 0.0f, Random.Range(-90.0f, 90.0f));
 			Boids boid = Instantiate(boidParameters.BoidPrefab, boidsPosition, Quaternion.identity, transform);
-			boid.Init(boidParameters);
+			boid.Init(boidParameters, Random.Range(0.0f, maxAudioTriggerProbability), _audioTimeInterval);
 			_boids.Add(boid);
+			
+			if (SoundManager.Instance != null)
+			{
+				SoundManager.Instance.RegisterAudioSource(boid.AudioSource);
+			}
+			
 		}
     }
 
@@ -37,6 +47,11 @@ public class BoidsManager : MonoBehaviour
         foreach (Boids boid in _boids)
         {
 			boid.UpdateBoids(_boids, _fleePoints, _player);
+
+			if (SoundManager.Instance != null)
+			{
+				boid.TriggerSoundIfNeeded();
+			}
 		}
     }
 

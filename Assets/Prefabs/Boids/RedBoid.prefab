@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedBoid
       objectReference: {fileID: 0}
+    - target: {fileID: 7630077221574331132, guid: ba4607b3e3455a9439aca4667ec3293a, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: a1e34acf1081e2546af30b80cdfa942f, type: 3}
+    - target: {fileID: 7630077221574331132, guid: ba4607b3e3455a9439aca4667ec3293a, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a1e34acf1081e2546af30b80cdfa942f, type: 3}
     - target: {fileID: 8108292563634815071, guid: ba4607b3e3455a9439aca4667ec3293a, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
