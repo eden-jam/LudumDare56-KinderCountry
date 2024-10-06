@@ -40,7 +40,7 @@ public class CharacterMovement : MonoBehaviour
 
 		if (move != Vector3.zero)
         {
-            gameObject.transform.forward = move;
+            gameObject.transform.forward = new Vector3(move.x, 0.0f, move.z);
         }
 
 
