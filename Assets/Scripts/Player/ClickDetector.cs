@@ -92,13 +92,17 @@ public class ClickDetector : MonoBehaviour
 
 	public void SetState(CharacterState.State state)
 	{
+		CharacterState.State old = _currentState;
 		_currentState = state;
 		switch (_currentState)
 		{
 			case CharacterState.State.SpawnFlee:
 				{
-					SpawnFlee();
-					ResetAction();
+					if (old != _currentState)
+					{
+						SpawnFlee();
+						ResetAction();
+					}
 				}
 				break;
 			case CharacterState.State.Lure:
