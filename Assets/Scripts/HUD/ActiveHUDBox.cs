@@ -51,6 +51,8 @@ public class ActiveHUDBoc : MonoBehaviour
                 break;
             case 4: ClickDetector.Instance.SetState(CharacterState.State.Cry);
                 break;
+            case 5: Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+                break;
         }
 
     }
