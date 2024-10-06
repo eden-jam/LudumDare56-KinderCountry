@@ -65,7 +65,7 @@ public class Boids : MonoBehaviour
 	private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-		_rigidbody.linearVelocity = new Vector3(Random.Range(-1.0f, 1.0f), 0.0f, Random.Range(-1.0f, 1.0f)).normalized;
+		_rigidbody.linearVelocity = new Vector3(Random.Range(-1.0f, 1.0f), 0.0f, Random.Range(-1.0f, 1.0f)).normalized * _boidsParameters.MaxSpeed;
 
 		// Do we want to listen to events for some reasons,
 		_animator.fireEvents = false;
