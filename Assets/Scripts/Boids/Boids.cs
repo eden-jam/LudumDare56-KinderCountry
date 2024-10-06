@@ -143,7 +143,7 @@ public class Boids : MonoBehaviour
 
 		_animator.SetBool("IsControlled", _attractionBehavior.IsFollowingPlayer);
 
-		if (Velocity.magnitude > _boidsParameters.MaxSpeed)
+		if (Velocity.magnitude > _boidsParameters.MaxSpeed || _boidsParameters.Normalize)
 		{
 			Velocity = Velocity.normalized * _boidsParameters.MaxSpeed;
 		}

@@ -4,6 +4,8 @@ using UnityEngine;
 public class BoidsParameters : ScriptableObject
 {
 	public bool DisplayGizmos = false;
+	public bool DisplayDistance = false;
+	public bool Normalize = false;
 	public Boids BoidPrefab;
 	public Type Type = Type.RED;
 	public float MaxSpeed = 5.0f;
