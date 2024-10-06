@@ -25,7 +25,7 @@ MonoBehaviour:
     FriendlyWeight: 2
     StrangerWeight: 0.5
   AttractionParameters:
-    Weight: 1
+    Weight: 3
     PerceptionDistance: 20
   CohesionParameters:
     Weight: 3
