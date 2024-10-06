@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8dcbbf14e576274a9b8075ccbce15ff, type: 3}
   m_Name: GreenBoidsParameters
   m_EditorClassIdentifier: 
-  DisplayGizmos: 1
+  DisplayGizmos: 0
+  DisplayDistance: 0
+  Normalize: 1
   BoidPrefab: {fileID: 4485510235916409497, guid: fd6d360aaee54e443a88bf3242caea42, type: 3}
   Type: 1
   MaxSpeed: 5
@@ -50,11 +52,11 @@ MonoBehaviour:
   LureParameters:
     Weight: 25
     PerceptionDistance: 10
-    Duration: 1
+    Duration: 2
   CryParameters:
     Weight: -25
     PerceptionDistance: 10
-    Duration: 1
+    Duration: 2
   PuddleAttraction:
     Weight: 10
     PerceptionDistance: 50
