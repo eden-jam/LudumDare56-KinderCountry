@@ -73,7 +73,7 @@ public class BoidsManager : MonoBehaviour
 			}
 		}
 
-		if (_leavingCount < _minCount)
+		if (_leavingCount <= _minCount)
 		{
 			FinishManager.Instance.Finish();
 		}

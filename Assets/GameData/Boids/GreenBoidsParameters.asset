@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8dcbbf14e576274a9b8075ccbce15ff, type: 3}
   m_Name: GreenBoidsParameters
   m_EditorClassIdentifier: 
-  DisplayGizmos: 0
+  DisplayGizmos: 1
   BoidPrefab: {fileID: 4485510235916409497, guid: fd6d360aaee54e443a88bf3242caea42, type: 3}
   Type: 1
   MaxSpeed: 5
+  KeepVelocity: 1
   AlignParameters:
     Weight: 2
     PerceptionDistance: 5
