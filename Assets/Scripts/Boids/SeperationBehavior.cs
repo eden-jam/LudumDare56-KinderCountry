@@ -17,7 +17,7 @@ public class SeperationBehavior : IBehavior
 		int total = 0;
         foreach (Boids other in others)
         {
-			if (other == _self)
+			if (other == _self || other.HasFinish != _self.HasFinish)
 			{
 				continue;
 			}
