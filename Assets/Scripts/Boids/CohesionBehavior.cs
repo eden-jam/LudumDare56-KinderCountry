@@ -17,7 +17,7 @@ public class CohesionBehavior : IBehavior
 		int total = 0;
 		foreach (Boids other in others)
 		{
-			if (other == _self || other.HasFinish != _self.HasFinish)
+			if (other.HasFinish != _self.HasFinish || other.GetHashCode() == _self.GetHashCode())
 			{
 				continue;
 			}

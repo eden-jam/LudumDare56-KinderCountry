@@ -15,6 +15,7 @@ public class BoidsManager : MonoBehaviour
 	[SerializeField] private Transform _fleeParent = null;
 	[SerializeField][Range(0,1)] private float maxAudioTriggerProbability = 0.0f;
 	[SerializeField] private float _audioTimeInterval = 6.0f;
+	[SerializeField] private int _minCount = 50;
 	private int _leavingCount = 100;
 
 	private void Awake()
@@ -29,7 +30,7 @@ public class BoidsManager : MonoBehaviour
 		for (int i = 0; i < _count; i++)
         {
 			BoidsParameters boidParameters = _boidsParameters[Random.Range(0, _boidsParameters.Count)];
-			Vector3 boidsPosition = new Vector3(Random.Range(-50.0f, 50.0f), 10.0f, Random.Range(-50.0f, 50.0f)) + transform.position;
+			Vector3 boidsPosition = new Vector3(Random.Range(-50.0f, 50.0f), 0.0f, Random.Range(-50.0f, 50.0f)) + transform.position;
 			Boids boid = Instantiate(boidParameters.BoidPrefab, boidsPosition, Quaternion.identity, transform);
 			boid.Init(boidParameters, Random.Range(0.0f, maxAudioTriggerProbability), _audioTimeInterval);
 			_boids.Add(boid);
@@ -70,6 +71,11 @@ public class BoidsManager : MonoBehaviour
 			{
 				_leavingCount--;
 			}
+		}
+
+		if (_leavingCount < _minCount)
+		{
+			FinishManager.Instance.Finish();
 		}
     }
 
