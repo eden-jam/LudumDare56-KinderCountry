@@ -493,7 +493,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 40
+  field of view: 12.138534
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -519,8 +519,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 536931808}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3419029, y: -0.024598263, z: 0.008953034, w: 0.9393707}
-  m_LocalPosition: {x: 0, y: 45, z: -50}
+  m_LocalRotation: {x: 0.122716196, y: 0.097562194, z: -0.012123271, w: 0.98756033}
+  m_LocalPosition: {x: 37.71228, y: 1.8725193, z: 25.03185}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -686,6 +686,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1169825825 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9075574380567309131, guid: e4890d9ce89c6af43ab089db719d723d, type: 3}
+  m_PrefabInstance: {fileID: 1358074328}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1184676725
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1261,6 +1266,10 @@ PrefabInstance:
       propertyPath: m_InitialState
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4601479602853625943, guid: aea024a15b3956c4faeb538f46fd4876, type: 3}
+      propertyPath: m_SceneBindings.Array.data[6].value
+      value: 
+      objectReference: {fileID: 1169825825}
     - target: {fileID: 4978282953412747425, guid: aea024a15b3956c4faeb538f46fd4876, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
