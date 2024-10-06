@@ -29,38 +29,65 @@ You can also use the shortcut 1,2,3,4 on the keyboards to use this function.
 ![Capture d’écran 2024-10-06 175333.png](https://img.itch.zone/aW1nLzE4MDY0NjM2LnBuZw==/original/814yyD.png)
 
 CREDITS
+
 **Programmers**
+
 Luca Floreau
+
 Grégoire Boiron
+
 Benjamin Ledoux
+
 Hervé Chevallier
+
 Erwan Ousidhoum
 
 **Game Designer**
+
 Benjamin Ledoux
+
 Hervé Chevallier
+
 Luca Floreau
+
 Grégoire Boiron
+
 
 **Main UI Programmer**
+
 Erwan Ousidhoum
+
 
 **Music Composer & Sound Designer**
+
 Arnaud Royer
 
+
 **Art & Cinematic**
+
 Alexandre Méaux
 
+
 **Problem Solver & Anger Management**
+
 Erwan Ousidhoum
 
+
 **Uncle Ben**
+
 Grégoire Boiron
 
+
 **Free Asset Store**
+
 Low Poly Fence Pack - Broken Vector
+
 25+ Free Stylized Textures - Game Buffs
+
 Low Poly Mushrooms Pack - Papersy
+
 Stylized Low Poly Rocks - JustCreate
+
 (URP) Simple Toon Shader - Indie Game Helper
+
 Kawaii Slimes - Awaii Studio
