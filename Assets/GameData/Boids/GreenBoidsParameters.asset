@@ -32,6 +32,8 @@ MonoBehaviour:
     StrangerWeight: 0.5
   EdgeAvoidParameters:
     Weight: 10
+    MinPosition: {x: -90, y: -105}
+    MaxPosition: {x: 100, y: 90}
   FleeParameters:
     Weight: 0
     PerceptionDistance: 5
@@ -46,13 +48,13 @@ MonoBehaviour:
     FriendlyWeight: 1
     StrangerWeight: 1
   LureParameters:
-    Weight: 1
-    PerceptionDistance: 5
+    Weight: 25
+    PerceptionDistance: 10
     Duration: 1
   CryParameters:
-    Weight: 1
-    PerceptionDistance: 5
+    Weight: -25
+    PerceptionDistance: 10
     Duration: 1
   PuddleAttraction:
-    Weight: 20
+    Weight: 10
     PerceptionDistance: 50

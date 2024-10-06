@@ -1,4 +1,6 @@
+using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
@@ -15,8 +17,21 @@ public class FinishManager : MonoBehaviour
 	[SerializeField] private GameObject _endUI;
 	[SerializeField] private TextMeshProUGUI _endCount;
 	[SerializeField] private PlayableDirector _endSequence;
+	[SerializeField] private Transform _kingBlob;
+	[SerializeField] private float _ratio = 1.0f;
+	private Vector3 _startScale;
 
 	private bool _hasFinish = false;
+
+	private void Start()
+	{
+		_startScale = _kingBlob.localScale;
+	}
+
+	public void IncreaseSize(int oldSize, int newOld)
+	{
+		_kingBlob.localScale = newOld * _ratio * _startScale;
+	}
 
 	public void Finish()
 	{

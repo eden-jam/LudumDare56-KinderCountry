@@ -16,6 +16,7 @@ MonoBehaviour:
   BoidPrefab: {fileID: 1803561816863729719, guid: a2ce29f33ee08e24d8e00ac70156a047, type: 3}
   Type: 0
   MaxSpeed: 6
+  KeepVelocity: 1
   AlignParameters:
     Weight: 2
     PerceptionDistance: 5
@@ -31,6 +32,8 @@ MonoBehaviour:
     StrangerWeight: 0
   EdgeAvoidParameters:
     Weight: 10
+    MinPosition: {x: -90, y: -105}
+    MaxPosition: {x: 100, y: 90}
   FleeParameters:
     Weight: -5
     PerceptionDistance: 5
@@ -45,13 +48,13 @@ MonoBehaviour:
     FriendlyWeight: 1
     StrangerWeight: 1
   LureParameters:
-    Weight: 1
-    PerceptionDistance: 5
+    Weight: 25
+    PerceptionDistance: 10
     Duration: 1
   CryParameters:
-    Weight: 1
-    PerceptionDistance: 5
+    Weight: -25
+    PerceptionDistance: 10
     Duration: 1
   PuddleAttraction:
-    Weight: 20
+    Weight: 10
     PerceptionDistance: 50
