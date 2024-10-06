@@ -135,12 +135,14 @@ public class ClickDetector : MonoBehaviour
 			StopCoroutine(_coroutine);
 		}
 		_coroutine = StartCoroutine(DelayAction(_resetDelay));
+
 	}
 
 	IEnumerator DelayAction(float delayTime)
 	{
 		yield return new WaitForSeconds(delayTime);
 		FindAnyObjectByType<ActiveHUDBoc>().ToggleActiveSlot(1);
+		BoidsManager.Instance.ResetState();
 	}
 
 	public void SpawnFlee()

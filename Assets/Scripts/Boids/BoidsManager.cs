@@ -101,6 +101,11 @@ public class BoidsManager : MonoBehaviour
 		}
 	}
 
+	public void ResetState()
+	{
+		_state.OnMove();
+	}
+
 	public void SpawnFlee()
 	{
 		_state.OnSpawnFlee();

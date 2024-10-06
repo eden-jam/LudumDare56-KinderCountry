@@ -3,6 +3,7 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     public CharacterController controller;
+    public CharacterState state;
     public ClickDetector detector;
     public Animator animator;
     public float playerSpeed = 10f;
