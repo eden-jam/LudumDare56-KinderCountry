@@ -9,13 +9,13 @@ public class ActiveHUDBoc : MonoBehaviour
     private void Awake()
     {
         playerControls = new PlayerControls();
-
     }
 
     private void Start()
     {
         playerControls.Inventory.Keyboard.performed += ctx => ToggleActiveSlot((int)ctx.ReadValue<float>());
-    }
+		FindAnyObjectByType<ActiveHUDBoc>().ToggleActiveSlot(1);
+	}
 
     private void OnEnable()
     {

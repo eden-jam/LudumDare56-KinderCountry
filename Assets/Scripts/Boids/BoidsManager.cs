@@ -96,8 +96,8 @@ public class BoidsManager : MonoBehaviour
 		}
 	}
 
-	public void SpawnFlee(Vector3 position)
+	public void SpawnFlee()
 	{
-		_fleePoints.Add(Instantiate(_fleePrefab, position, Quaternion.identity, _fleeParent).transform);
+		_fleePoints.Add(Instantiate(_fleePrefab, _player.position, Quaternion.identity, _fleeParent).transform);
 	}
 }
