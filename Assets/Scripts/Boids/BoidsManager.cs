@@ -16,11 +16,14 @@ public class BoidsManager : MonoBehaviour
 	[SerializeField][Range(0,1)] private float maxAudioTriggerProbability = 0.0f;
 	[SerializeField] private float _audioTimeInterval = 6.0f;
 	[SerializeField] private int _minCount = 50;
+
 	private int _leavingCount = 100;
+	private CharacterState _state = null;
 
 	private void Awake()
 	{
 		Instance = this;
+		_state = _player.GetComponentInChildren<CharacterState>();
 	}
 
 	private void Start()
@@ -82,6 +85,7 @@ public class BoidsManager : MonoBehaviour
 
 	public void Lure()
 	{
+		_state.OnLure();
 		foreach (Boids boid in _boids)
 		{
 			boid.Lure(_player);
@@ -90,6 +94,7 @@ public class BoidsManager : MonoBehaviour
 
 	public void Cry()
 	{
+		_state.OnCry();
 		foreach (Boids boid in _boids)
 		{
 			boid.Cry(_player);
@@ -98,6 +103,7 @@ public class BoidsManager : MonoBehaviour
 
 	public void SpawnFlee()
 	{
+		_state.OnSpawnFlee();
 		_fleePoints.Add(Instantiate(_fleePrefab, _player.position, Quaternion.identity, _fleeParent).transform);
 	}
 }
