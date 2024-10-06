@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public enum State
 {
@@ -25,6 +26,11 @@ public class ClickDetector : MonoBehaviour
 
 	void Update()
     {
+		if (EventSystem.current.IsPointerOverGameObject())
+		{
+			return;
+		}
+
 		isPlayerHolding = Input.GetMouseButton(0);
         if (Input.GetKeyDown(KeyCode.Mouse0) || isPlayerHolding)
         {
