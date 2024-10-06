@@ -1107,9 +1107,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1380181751114172090, guid: b6dc9d5515b7a5e49b705414e07e8287, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 95.09
+      objectReference: {fileID: 0}
     - target: {fileID: 2317311314480633211, guid: b6dc9d5515b7a5e49b705414e07e8287, type: 3}
       propertyPath: m_Name
       value: RoutLD
+      objectReference: {fileID: 0}
+    - target: {fileID: 3438270703584654378, guid: b6dc9d5515b7a5e49b705414e07e8287, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 109.86
       objectReference: {fileID: 0}
     - target: {fileID: 7690366616540400120, guid: b6dc9d5515b7a5e49b705414e07e8287, type: 3}
       propertyPath: m_LocalPosition.x
