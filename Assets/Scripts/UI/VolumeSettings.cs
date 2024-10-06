@@ -33,7 +33,14 @@ public class VolumeSettings : MonoBehaviour
 
     private void LoadMasterVolume()
     {
-        masterSlider.value = PlayerPrefs.GetFloat("masterVolume");
+        if (PlayerPrefs.HasKey("masterVolume"))
+        {
+            masterSlider.value = PlayerPrefs.GetFloat("masterVolume");
+        }
+        else
+		{
+			masterSlider.value = 1.0f;
+		}
 
         SetMasterVolume();
     }
