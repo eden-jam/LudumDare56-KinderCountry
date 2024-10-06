@@ -35,6 +35,7 @@ public class FinishManager : MonoBehaviour
 
 	public void Finish()
 	{
+		Destroy(SoundManager.Instance.gameObject);
 		if (_hasFinish)
 			return;
 		_hasFinish = true;

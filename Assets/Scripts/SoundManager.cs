@@ -20,6 +20,7 @@ public class SoundManager : MonoBehaviour
 		}
 
 		Instance = this;
+        DontDestroyOnLoad(this);
 
 		_audioSources = new List<AudioSource>(MAX_PARALLEL_AUDIOS);
 	}
