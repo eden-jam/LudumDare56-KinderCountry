@@ -1,13 +1,6 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
-public enum State
-{
-	Move,
-	SpawnFlee,
-    Lure,
-    Cry
-}
 
 public class ClickDetector : MonoBehaviour
 {
@@ -17,7 +10,9 @@ public class ClickDetector : MonoBehaviour
     public bool hasPlayerClicked = false;
     public bool isPlayerHolding = false;
     public Collider groundCollider;
-    public State _currentState = State.Move;
+	public CharacterState.State _currentState = CharacterState.State.Move;
+	public float _resetDelay = 2.0f;
+    public Coroutine _coroutine = null;
 
 	private void Awake()
 	{
@@ -34,7 +29,7 @@ public class ClickDetector : MonoBehaviour
 		isPlayerHolding = Input.GetMouseButton(0);
         if (Input.GetKeyDown(KeyCode.Mouse0) || isPlayerHolding)
         {
-			if (_currentState == State.Move)
+			if (_currentState == CharacterState.State.Move)
 			{
 				UpdateClickWorldPosition();
 			}
@@ -44,22 +39,22 @@ public class ClickDetector : MonoBehaviour
 		{
 			switch (_currentState)
 			{
-				case State.Move:
+				case CharacterState.State.Move:
 					{
 						// Already done in the previous if
 					}
 					break;
-				case State.SpawnFlee:
+				case CharacterState.State.SpawnFlee:
 					{
 						SpawnFlee();
 					}
 					break;
-				case State.Lure:
+				case CharacterState.State.Lure:
 					{
 						Lure();
 					}
 					break;
-				case State.Cry:
+				case CharacterState.State.Cry:
 					{
 						Cry();
 					}
@@ -67,7 +62,6 @@ public class ClickDetector : MonoBehaviour
 				default:
 					break;
 			}
-
 			hasPlayerClicked = true;
 		}
 		else
@@ -96,9 +90,32 @@ public class ClickDetector : MonoBehaviour
 		}
 	}
 
-	public void SetState(State state)
+	public void SetState(CharacterState.State state)
 	{
 		_currentState = state;
+		switch (_currentState)
+		{
+			case CharacterState.State.SpawnFlee:
+				{
+					SpawnFlee();
+					ResetAction();
+				}
+				break;
+			case CharacterState.State.Lure:
+				{
+					Lure();
+					ResetAction();
+				}
+				break;
+			case CharacterState.State.Cry:
+				{
+					Cry();
+					ResetAction();
+				}
+				break;
+			default:
+				break;
+		}
 	}
 
 	public void Lure()
@@ -111,23 +128,23 @@ public class ClickDetector : MonoBehaviour
 		BoidsManager.Instance.Cry();
 	}
 
+	private void ResetAction()
+	{
+		if (_coroutine != null)
+		{
+			StopCoroutine(_coroutine);
+		}
+		_coroutine = StartCoroutine(DelayAction(_resetDelay));
+	}
+
+	IEnumerator DelayAction(float delayTime)
+	{
+		yield return new WaitForSeconds(delayTime);
+		FindAnyObjectByType<ActiveHUDBoc>().ToggleActiveSlot(1);
+	}
+
 	public void SpawnFlee()
 	{
-		Vector3 mousePos = Input.mousePosition;  //Récup de la position de la souris à l'écran
-
-		float horizontal = mousePos.x;
-		float vertical = mousePos.y;
-
-		//Debug.Log(horizontal + " | " + vertical);
-
-		//Transformer position du click en position dans le World
-		Ray projectedPos = Camera.main.ScreenPointToRay(mousePos); //Rayon perpendiculaire au plan de la caméra qui passe par le point de clic
-
-
-		if (groundCollider.Raycast(projectedPos, out RaycastHit raycastHit, 1000.0f)) //Collision Rayon <> collider du sol
-		{
-			// Stocker cette position
-			BoidsManager.Instance.SpawnFlee(raycastHit.point);
-		}
+		BoidsManager.Instance.SpawnFlee();
 	}
 }

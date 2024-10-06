@@ -9,13 +9,13 @@ public class ActiveHUDBoc : MonoBehaviour
     private void Awake()
     {
         playerControls = new PlayerControls();
-
     }
 
     private void Start()
     {
         playerControls.Inventory.Keyboard.performed += ctx => ToggleActiveSlot((int)ctx.ReadValue<float>());
-    }
+		FindAnyObjectByType<ActiveHUDBoc>().ToggleActiveSlot(1);
+	}
 
     private void OnEnable()
     {
@@ -43,13 +43,13 @@ public class ActiveHUDBoc : MonoBehaviour
     {
         switch (indexNum)
         {
-            case 1: ClickDetector.Instance.SetState(State.Move);
+            case 1: ClickDetector.Instance.SetState(CharacterState.State.Move);
                 break;
-            case 2: ClickDetector.Instance.SetState(State.SpawnFlee);
+            case 2: ClickDetector.Instance.SetState(CharacterState.State.SpawnFlee);
                 break;
-            case 3: ClickDetector.Instance.SetState(State.Lure);
+            case 3: ClickDetector.Instance.SetState(CharacterState.State.Lure);
                 break;
-            case 4: ClickDetector.Instance.SetState(State.Cry);
+            case 4: ClickDetector.Instance.SetState(CharacterState.State.Cry);
                 break;
         }
 
