@@ -19,6 +19,7 @@ public class FinishManager : MonoBehaviour
 	[SerializeField] private PlayableDirector _endSequence;
 	[SerializeField] private Transform _kingBlob;
 	[SerializeField] private float _ratio = 1.0f;
+	[SerializeField] private AudioClip _clip = null;
 	private Vector3 _startScale;
 
 	private bool _hasFinish = false;
@@ -35,7 +36,8 @@ public class FinishManager : MonoBehaviour
 
 	public void Finish()
 	{
-		//Destroy(SoundManager.Instance.gameObject);
+		SoundManager.Instance.Delete();
+		SoundManager.Instance.GetComponent<AudioSource>().Stop();
 		if (_hasFinish)
 			return;
 		_hasFinish = true;
@@ -57,4 +59,9 @@ public class FinishManager : MonoBehaviour
 		SceneManager.LoadScene("MainMenu");
 	}
 
+	public void PlaySound()
+	{
+		SoundManager.Instance.GetComponent<AudioSource>().clip = _clip;
+		SoundManager.Instance.GetComponent<AudioSource>().Play();
+	}
 }

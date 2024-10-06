@@ -51,9 +51,12 @@ public class SoundManager : MonoBehaviour
 		}
 	}
 
-	public void OnDestroy()
+	public void Delete()
 	{
-        _audioSources.Clear();
+        foreach (var audioSource in _audioSources)
+		{
+			Destroy(audioSource.gameObject);
+		}
         _nbAudioActive = 0;
 	}
 }

@@ -818,6 +818,7 @@ MonoBehaviour:
   _endSequence: {fileID: 4601479602853625943}
   _kingBlob: {fileID: 1200049245364353779}
   _ratio: 0.5
+  _clip: {fileID: 8300000, guid: 84f84232759fa1c4ba64e9c96739ba48, type: 3}
 --- !u!1 &4909362191407822699
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,6 +829,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6527397466912678677}
   - component: {fileID: 4601479602853625943}
+  - component: {fileID: 7303344455124115202}
   m_Layer: 0
   m_Name: Cinematic
   m_TagString: Untagged
@@ -895,8 +897,40 @@ PlayableDirector:
     value: {fileID: 2145625278485171964}
   - key: {fileID: 1170440844690905393, guid: fa76512807e87c340bf1348ce0b91619, type: 2}
     value: {fileID: 1362465525780445391}
+  - key: {fileID: 2885021363308370193, guid: fa76512807e87c340bf1348ce0b91619, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
+--- !u!114 &7303344455124115202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4909362191407822699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: b6eaf17608152dd45b943c43b909015d, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7618088782730782966}
+          m_TargetAssemblyTypeName: FinishManager, Assembly-CSharp
+          m_MethodName: PlaySound
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &5805380439179557729
 GameObject:
   m_ObjectHideFlags: 0
