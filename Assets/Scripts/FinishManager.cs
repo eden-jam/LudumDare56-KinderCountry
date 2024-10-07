@@ -50,12 +50,13 @@ public class FinishManager : MonoBehaviour
 	private void OnAnimationEnded(PlayableDirector director)
 	{
 		director.stopped -= OnAnimationEnded;
-		_endCount.text = Time.timeSinceLevelLoad.ToString("00") + "s";
+		_endCount.text = Time.timeSinceLevelLoad.ToString("00") + " seconds";
 		_endUI.SetActive(true);
 	}
 
 	public void Restart()
 	{
+		Destroy(SoundManager.Instance.gameObject);
 		SceneManager.LoadScene("MainMenu");
 	}
 
