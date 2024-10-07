@@ -1023,10 +1023,6 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1490825695}
-    - target: {fileID: 5004490952680062065, guid: aabaced266ed3384a831b102779d81f6, type: 3}
-      propertyPath: _minCount
-      value: 80
-      objectReference: {fileID: 0}
     - target: {fileID: 7970824752603205200, guid: aabaced266ed3384a831b102779d81f6, type: 3}
       propertyPath: m_Name
       value: BoidsManager
