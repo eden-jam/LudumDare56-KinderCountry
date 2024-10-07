@@ -1452,6 +1452,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5273716266698028780, guid: f9c95109289a4b145bc430ff7536ce8e, type: 3}
+    - {fileID: 2057233022265892382, guid: f9c95109289a4b145bc430ff7536ce8e, type: 3}
+    - {fileID: 7882798317057450447, guid: f9c95109289a4b145bc430ff7536ce8e, type: 3}
+    - {fileID: 7917924671157212374, guid: f9c95109289a4b145bc430ff7536ce8e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1726,6 +1729,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5529094755960373445, guid: a2ce29f33ee08e24d8e00ac70156a047, type: 3}
+    - {fileID: 1803561816863729719, guid: a2ce29f33ee08e24d8e00ac70156a047, type: 3}
+    - {fileID: 7561007418780669926, guid: a2ce29f33ee08e24d8e00ac70156a047, type: 3}
+    - {fileID: 7523639122962080511, guid: a2ce29f33ee08e24d8e00ac70156a047, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2599,6 +2605,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5529094755960373445, guid: a2ce29f33ee08e24d8e00ac70156a047, type: 3}
+    - {fileID: 1803561816863729719, guid: a2ce29f33ee08e24d8e00ac70156a047, type: 3}
+    - {fileID: 7561007418780669926, guid: a2ce29f33ee08e24d8e00ac70156a047, type: 3}
+    - {fileID: 7523639122962080511, guid: a2ce29f33ee08e24d8e00ac70156a047, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2820,6 +2829,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2057233022265892382, guid: f9c95109289a4b145bc430ff7536ce8e, type: 3}
     - {fileID: 5273716266698028780, guid: f9c95109289a4b145bc430ff7536ce8e, type: 3}
+    - {fileID: 7882798317057450447, guid: f9c95109289a4b145bc430ff7536ce8e, type: 3}
+    - {fileID: 7917924671157212374, guid: f9c95109289a4b145bc430ff7536ce8e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

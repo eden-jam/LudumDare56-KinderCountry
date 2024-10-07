@@ -21,11 +21,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: King
-  m_Shader: {fileID: 4800000, guid: 313fcf3aebc04cf4ab4f8c5f2850be7f, type: 3}
+  m_Shader: {fileID: 4800000, guid: 128c5f1edaefa4c4fb3f9f7a4615edb2, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords: []
+  m_InvalidKeywords:
+  - _SEGMENTED_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -65,7 +66,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 3bb9fa0d8d0293e4cadb088c2ca595fa, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -103,10 +104,14 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
+    - _AmbientCol: 0
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _Clipped: 0
+    - _ColBright: 0
+    - _ColIntense: 1
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -117,37 +122,51 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _Lumin: 0.15
+    - _MaxLight: 1
     - _Metallic: 0
+    - _MinLight: 0.219
     - _OcclusionStrength: 1
-    - _OutlineWidth: 0.441
+    - _Offset: -0.41
+    - _OtlWidth: 5
+    - _OutlineWidth: 0.107
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _RimStep: 0.855
-    - _RimStepSmooth: 0.142
-    - _ShadowStep: 0.667
-    - _ShadowStepSmooth: 0.07
+    - _RimStep: 0.69
+    - _RimStepSmooth: 0.24
+    - _Segmented: 1
+    - _ShadowStep: 0.79
+    - _ShadowStepSmooth: 0.04
+    - _ShnIntense: 0
+    - _ShnOverlap: 0
+    - _ShnRange: 0
+    - _ShnSmooth: 0
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SpecularStep: 0.415
-    - _SpecularStepSmooth: 0.192
+    - _SpecularStep: 0
+    - _SpecularStepSmooth: 0
     - _SrcBlend: 1
-    - _Step1: 0.847
+    - _Step1: 0.827
     - _Step2: 0.021
     - _Step3: 1
     - _Step4: 1
+    - _Steps: 2.4
+    - _StpSmooth: 0.287
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.8018868, g: 0.6370692, b: 0, a: 1}
-    - _Color: {r: 0.9156501, g: 1, b: 0.8537736, a: 1}
+    - _BaseColor: {r: 0.042452812, g: 0.5648946, b: 1, a: 1}
+    - _Color: {r: 1, g: 0.8352942, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HighColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OtlColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _ShadowColor: {r: 0.8, g: 0.8, b: 1, a: 1}
+    - _RimColor: {r: 0.5, g: 0.5, b: 0.5, a: 0}
+    - _ShadowColor: {r: 0.745283, g: 0.64348674, b: 0.35506406, a: 1}
+    - _ShnColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
